@@ -1,0 +1,8 @@
+model/Proprietario.class
+view/Main.class
+view/TelaLogin.class
+model/dao/IDao.class
+model/dao/ProprietarioDAO.class
+factory/Persistencia.class
+controller/ProprietarioController.class
+view/components/RoundedPanel.class
