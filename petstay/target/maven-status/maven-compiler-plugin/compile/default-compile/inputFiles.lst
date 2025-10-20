@@ -1,8 +1,11 @@
-/home/lohran/Documentos/PetStay/src/main/java/controller/ProprietarioController.java
-/home/lohran/Documentos/PetStay/src/main/java/factory/Persistencia.java
-/home/lohran/Documentos/PetStay/src/main/java/model/Proprietario.java
-/home/lohran/Documentos/PetStay/src/main/java/model/dao/IDao.java
-/home/lohran/Documentos/PetStay/src/main/java/model/dao/ProprietarioDAO.java
-/home/lohran/Documentos/PetStay/src/main/java/view/Main.java
-/home/lohran/Documentos/PetStay/src/main/java/view/TelaLogin.java
-/home/lohran/Documentos/PetStay/src/main/java/view/components/RoundedPanel.java
+C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\controller\ProprietarioController.java
+C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\factory\Persistencia.java
+C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\model\dao\IDao.java
+C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\model\dao\ProprietarioDAO.java
+C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\model\Proprietario.java
+C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\components\PanelRound.java
+C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\components\win_button\Button.java
+C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\components\win_button\WinButton.java
+C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\FrLogin.java
+C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\FrRegister.java
+C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\Main.java
