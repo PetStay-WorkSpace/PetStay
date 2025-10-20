@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com</groupId>
-    <artifactId>Trabalho_01</artifactId>
+    <artifactId>PetStay_main</artifactId>
     <version>1.0</version>
 
     <properties>

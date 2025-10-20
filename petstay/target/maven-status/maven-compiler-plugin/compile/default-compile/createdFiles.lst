@@ -3,7 +3,6 @@ view\components\win_button\WinButton.class
 view\FrRegister.class
 model\dao\IDao.class
 view\components\win_button\Button.class
-controller\ProprietarioController.class
 model\dao\ProprietarioDAO.class
 model\Proprietario.class
 view\Main.class

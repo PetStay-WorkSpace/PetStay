@@ -32,9 +32,24 @@ public class FrLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelRound1 = new view.components.PanelRound();
-        panelRound2 = new view.components.PanelRound();
+        painelGeral = new view.components.PanelRound();
+        header = new view.components.PanelRound();
         winButton1 = new view.components.win_button.WinButton();
+        body = new view.components.PanelRound();
+        panelRound4 = new view.components.PanelRound();
+        panelRound1 = new view.components.PanelRound();
+        texts_info = new javax.swing.JPanel();
+        alignCenter = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        areaEmail = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PetStay");
@@ -44,54 +59,175 @@ public class FrLogin extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        panelRound1.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound1.setRoundBottomLeft(30);
+        painelGeral.setBackground(new java.awt.Color(255, 255, 255));
+        painelGeral.setRoundBottomLeft(30);
+        painelGeral.setRoundBottomRight(30);
+        painelGeral.setRoundTopLeft(30);
+        painelGeral.setRoundTopRight(30);
+        painelGeral.setLayout(new javax.swing.BoxLayout(painelGeral, javax.swing.BoxLayout.PAGE_AXIS));
+
+        header.setBackground(new java.awt.Color(255, 255, 255));
+        header.setMaximumSize(new java.awt.Dimension(32767, 25));
+        header.setRoundTopLeft(30);
+        header.setRoundTopRight(30);
+
+        winButton1.setMinimumSize(new java.awt.Dimension(57, 20));
+
+        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
+        header.setLayout(headerLayout);
+        headerLayout.setHorizontalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(winButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(838, Short.MAX_VALUE))
+        );
+        headerLayout.setVerticalGroup(
+            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(winButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        painelGeral.add(header);
+
+        body.setBackground(new java.awt.Color(255, 255, 255));
+        body.setRoundBottomLeft(30);
+        body.setRoundBottomRight(30);
+
+        panelRound4.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound4.setRoundBottomLeft(30);
+
+        javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
+        panelRound4.setLayout(panelRound4Layout);
+        panelRound4Layout.setHorizontalGroup(
+            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 527, Short.MAX_VALUE)
+        );
+        panelRound4Layout.setVerticalGroup(
+            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        panelRound1.setBackground(new java.awt.Color(247, 247, 248));
+        panelRound1.setAlignmentY(0.5F);
+        panelRound1.setRoundBottomLeft(40);
         panelRound1.setRoundBottomRight(30);
-        panelRound1.setRoundTopLeft(30);
-        panelRound1.setRoundTopRight(30);
+        panelRound1.setRoundTopLeft(40);
 
-        panelRound2.setRoundTopLeft(30);
-        panelRound2.setRoundTopRight(30);
+        texts_info.setLayout(new java.awt.GridLayout(2, 1));
 
-        javax.swing.GroupLayout panelRound2Layout = new javax.swing.GroupLayout(panelRound2);
-        panelRound2.setLayout(panelRound2Layout);
-        panelRound2Layout.setHorizontalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound2Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(winButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(763, Short.MAX_VALUE))
-        );
-        panelRound2Layout.setVerticalGroup(
-            panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound2Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(winButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        alignCenter.setBackground(new java.awt.Color(247, 247, 248));
+
+        jLabel1.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        jLabel1.setText("Acesse sua conta");
+        alignCenter.add(jLabel1);
+
+        texts_info.add(alignCenter);
+
+        jPanel1.setBackground(new java.awt.Color(247, 247, 248));
+
+        jLabel2.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+        jLabel2.setText("Bem-vindo de volta! Insira seus dados para continuar.");
+        jPanel1.add(jLabel2);
+
+        texts_info.add(jPanel1);
+
+        areaEmail.setBackground(new java.awt.Color(247, 247, 248));
+        areaEmail.setMaximumSize(new java.awt.Dimension(358, 139));
+        areaEmail.setLayout(new java.awt.GridLayout(2, 1));
+
+        jLabel3.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel3.setText("Email:");
+        jLabel3.setMaximumSize(new java.awt.Dimension(280, 22));
+        jLabel3.setPreferredSize(new java.awt.Dimension(280, 16));
+        areaEmail.add(jLabel3);
+
+        jTextField1.setBorder(null);
+        jTextField1.setMaximumSize(new java.awt.Dimension(280, 40));
+        jTextField1.setPreferredSize(new java.awt.Dimension(280, 40));
+        jTextField1.setSelectedTextColor(new java.awt.Color(204, 204, 204));
+        jTextField1.setSelectionColor(new java.awt.Color(0, 130, 243));
+        areaEmail.add(jTextField1);
+
+        jPanel2.setBackground(new java.awt.Color(247, 247, 248));
+        jPanel2.setMaximumSize(new java.awt.Dimension(358, 139));
+        jPanel2.setLayout(new java.awt.GridLayout(2, 1));
+
+        jLabel4.setBackground(new java.awt.Color(247, 247, 248));
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel4.setText("Senha:");
+        jLabel4.setMaximumSize(new java.awt.Dimension(280, 22));
+        jPanel2.add(jLabel4);
+
+        jPasswordField1.setToolTipText("");
+        jPasswordField1.setBorder(null);
+        jPasswordField1.setMaximumSize(new java.awt.Dimension(280, 40));
+        jPasswordField1.setPreferredSize(new java.awt.Dimension(280, 40));
+        jPasswordField1.setSelectedTextColor(new java.awt.Color(204, 204, 204));
+        jPasswordField1.setSelectionColor(new java.awt.Color(0, 130, 243));
+        jPanel2.add(jPasswordField1);
+
+        jButton1.setBackground(new java.awt.Color(0, 130, 243));
+        jButton1.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Entrar");
+        jButton1.setBorder(null);
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(texts_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(areaEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
-                .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 421, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(texts_info, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(areaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(109, Short.MAX_VALUE))
         );
+
+        javax.swing.GroupLayout bodyLayout = new javax.swing.GroupLayout(body);
+        body.setLayout(bodyLayout);
+        bodyLayout.setHorizontalGroup(
+            bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bodyLayout.createSequentialGroup()
+                .addComponent(panelRound4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        bodyLayout.setVerticalGroup(
+            bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelRound4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        painelGeral.add(body);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelGeral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelGeral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -124,8 +260,23 @@ public class FrLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel alignCenter;
+    private javax.swing.JPanel areaEmail;
+    private view.components.PanelRound body;
+    private view.components.PanelRound header;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField jTextField1;
+    private view.components.PanelRound painelGeral;
     private view.components.PanelRound panelRound1;
-    private view.components.PanelRound panelRound2;
+    private view.components.PanelRound panelRound4;
+    private javax.swing.JPanel texts_info;
     private view.components.win_button.WinButton winButton1;
     // End of variables declaration//GEN-END:variables
 }
