@@ -1,11 +1,16 @@
-view\FrRegister.class
+view\FrCadastrar$1.class
 model\Proprietario.class
 view\components\PanelRound.class
+view\FrCadastrar$4.class
 view\FrLogin$2.class
+view\FrCadastrar$2.class
+view\FrCadastrar.class
 factory\Persistencia.class
 model\dao\IDao.class
+view\FrLogin$3.class
 view\components\win_button\WinButton.class
 view\components\win_button\Button.class
+view\FrCadastrar$3.class
 controller\ProprietarioController.class
 model\dao\ProprietarioDAO.class
 view\FrLogin$1.class

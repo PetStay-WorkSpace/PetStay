@@ -10,14 +10,14 @@ import java.awt.Color;
  *
  * @author lohran
  */
-public class FrLogin extends javax.swing.JFrame {
+public class FrCadastrar extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrLogin.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrCadastrar.class.getName());
 
     /**
      * Creates new form TelaLogin
      */
-    public FrLogin() {
+    public FrCadastrar() {
         initComponents();
         setBackground(new Color(0,0,0,0));
         winButton1.initEvent(this);
@@ -47,20 +47,21 @@ public class FrLogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         areaEmail = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         areaSenha = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JButton();
         divisor = new javax.swing.JPanel();
         jSeparator4 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        btnIrParaLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PetStay");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setUndecorated(true);
         setResizable(false);
 
@@ -106,7 +107,7 @@ public class FrLogin extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/Logo.png"))); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/bg_login.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/bg_cadastro.png"))); // NOI18N
 
         javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
         panelRound4.setLayout(panelRound4Layout);
@@ -115,7 +116,7 @@ public class FrLogin extends javax.swing.JFrame {
             .addGroup(panelRound4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                     .addGroup(panelRound4Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -141,7 +142,7 @@ public class FrLogin extends javax.swing.JFrame {
         alignCenter.setBackground(new java.awt.Color(247, 247, 248));
 
         jLabel1.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
-        jLabel1.setText("Acesse sua conta");
+        jLabel1.setText("Registre sua conta");
         alignCenter.add(jLabel1);
 
         texts_info.add(alignCenter);
@@ -149,23 +150,27 @@ public class FrLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(247, 247, 248));
 
         jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel2.setText("Bem-vindo de volta! Insira seus dados para continuar");
+        jLabel2.setText("Seja Bem-vindo, Insira seus dados");
         jPanel1.add(jLabel2);
 
         texts_info.add(jPanel1);
 
         areaEmail.setBackground(new java.awt.Color(247, 247, 248));
         areaEmail.setMaximumSize(new java.awt.Dimension(358, 139));
-        areaEmail.setLayout(new java.awt.GridLayout(2, 1));
+        areaEmail.setLayout(new java.awt.GridLayout(2, 2));
 
         jLabel3.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel3.setText("Email:");
+        jLabel3.setText("Nome:");
         jLabel3.setMaximumSize(new java.awt.Dimension(280, 22));
         jLabel3.setPreferredSize(new java.awt.Dimension(280, 16));
         areaEmail.add(jLabel3);
 
+        jLabel7.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        jLabel7.setText("Sobrenome:");
+        areaEmail.add(jLabel7);
+
         jTextField1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        jTextField1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 3, new java.awt.Color(247, 247, 248)));
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.setMaximumSize(new java.awt.Dimension(280, 40));
         jTextField1.setPreferredSize(new java.awt.Dimension(280, 40));
@@ -178,13 +183,17 @@ public class FrLogin extends javax.swing.JFrame {
         });
         areaEmail.add(jTextField1);
 
+        jTextField2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(247, 247, 248)));
+        areaEmail.add(jTextField2);
+
         areaSenha.setBackground(new java.awt.Color(247, 247, 248));
         areaSenha.setMaximumSize(new java.awt.Dimension(358, 139));
         areaSenha.setLayout(new java.awt.GridLayout(2, 1));
 
         jLabel4.setBackground(new java.awt.Color(247, 247, 248));
         jLabel4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel4.setText("Senha:");
+        jLabel4.setText("Email:");
         jLabel4.setMaximumSize(new java.awt.Dimension(280, 22));
         areaSenha.add(jLabel4);
 
@@ -205,18 +214,24 @@ public class FrLogin extends javax.swing.JFrame {
         btnEntrar.setBackground(new java.awt.Color(0, 130, 243));
         btnEntrar.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEntrar.setText("Entrar");
+        btnEntrar.setText("Cadastrar");
+        btnEntrar.setToolTipText("");
         btnEntrar.setBorder(null);
         btnEntrar.setBorderPainted(false);
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
         divisor.setBackground(new java.awt.Color(247, 247, 248));
         divisor.setLayout(new javax.swing.BoxLayout(divisor, javax.swing.BoxLayout.LINE_AXIS));
 
-        jButton1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jButton1.setText("Cadastrar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnIrParaLogin.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        btnIrParaLogin.setText("Login");
+        btnIrParaLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnIrParaLoginMouseClicked(evt);
             }
         });
 
@@ -224,14 +239,14 @@ public class FrLogin extends javax.swing.JFrame {
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(texts_info, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+            .addComponent(texts_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnIrParaLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(divisor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(areaSenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(areaEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(areaSenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                    .addComponent(areaEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(20, 20, 20))
@@ -250,7 +265,7 @@ public class FrLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIrParaLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(divisor, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -262,7 +277,7 @@ public class FrLogin extends javax.swing.JFrame {
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyLayout.createSequentialGroup()
                 .addComponent(panelRound4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         bodyLayout.setVerticalGroup(
@@ -296,14 +311,19 @@ public class FrLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        FrCadastrar cadastrar = new FrCadastrar();
-        cadastrar.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEntrarActionPerformed
+
+    private void btnIrParaLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrParaLoginMouseClicked
+        FrLogin login = new FrLogin();
+        login.setVisible(true);
+    }//GEN-LAST:event_btnIrParaLoginMouseClicked
 
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -323,7 +343,7 @@ public class FrLogin extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrLogin().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FrCadastrar().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -332,19 +352,21 @@ public class FrLogin extends javax.swing.JFrame {
     private javax.swing.JPanel areaSenha;
     private view.components.PanelRound body;
     private javax.swing.JButton btnEntrar;
+    private javax.swing.JButton btnIrParaLogin;
     private javax.swing.JPanel divisor;
     private view.components.PanelRound header;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private view.components.PanelRound painelGeral;
     private view.components.PanelRound panelRound1;
     private view.components.PanelRound panelRound4;
