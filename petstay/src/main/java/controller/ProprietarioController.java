@@ -24,4 +24,8 @@ public class ProprietarioController {
     public List<Object> findAll() {
         return PD.findAll();
     }
+
+    public Proprietario login(String email, String senha) {
+        return PD.validateLogin(email, senha);
+    }
 }

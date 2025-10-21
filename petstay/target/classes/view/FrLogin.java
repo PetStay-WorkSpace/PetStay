@@ -5,6 +5,10 @@
 package view;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import controller.ProprietarioController;
+import model.Proprietario;
+import model.Session;
 
 /**
  *
@@ -52,7 +56,6 @@ public class FrLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JButton();
-        divisor = new javax.swing.JPanel();
         jSeparator4 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
 
@@ -149,7 +152,7 @@ public class FrLogin extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(247, 247, 248));
 
         jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel2.setText("Bem-vindo de volta! Insira seus dados para continuar");
+        jLabel2.setText("Bem-vindo de volta! Insira seus dados");
         jPanel1.add(jLabel2);
 
         texts_info.add(jPanel1);
@@ -165,10 +168,11 @@ public class FrLogin extends javax.swing.JFrame {
         areaEmail.add(jLabel3);
 
         jTextField1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField1.setMaximumSize(new java.awt.Dimension(280, 40));
-        jTextField1.setPreferredSize(new java.awt.Dimension(280, 40));
+        jTextField1.setMaximumSize(new java.awt.Dimension(330, 40));
+        jTextField1.setPreferredSize(new java.awt.Dimension(330, 40));
         jTextField1.setSelectedTextColor(new java.awt.Color(204, 204, 204));
         jTextField1.setSelectionColor(new java.awt.Color(0, 130, 243));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -208,9 +212,16 @@ public class FrLogin extends javax.swing.JFrame {
         btnEntrar.setText("Entrar");
         btnEntrar.setBorder(null);
         btnEntrar.setBorderPainted(false);
-
-        divisor.setBackground(new java.awt.Color(247, 247, 248));
-        divisor.setLayout(new javax.swing.BoxLayout(divisor, javax.swing.BoxLayout.LINE_AXIS));
+        btnEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEntrarMouseClicked(evt);
+            }
+        });
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEntrarActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
         jButton1.setText("Cadastrar");
@@ -224,16 +235,15 @@ public class FrLogin extends javax.swing.JFrame {
         panelRound1.setLayout(panelRound1Layout);
         panelRound1Layout.setHorizontalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(texts_info, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
+            .addComponent(texts_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(divisor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(areaSenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(areaEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(areaEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
         panelRound1Layout.setVerticalGroup(
@@ -251,8 +261,6 @@ public class FrLogin extends javax.swing.JFrame {
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(divisor, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -299,7 +307,40 @@ public class FrLogin extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         FrCadastrar cadastrar = new FrCadastrar();
         cadastrar.setVisible(true);
+        
+        this.dispose();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
+        try {
+            String email = jTextField1.getText().trim();
+            String senha = new String(jPasswordField1.getPassword()).trim();
+
+            if (email.isEmpty() || senha.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Preencha email e senha.", "Atenção", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            ProprietarioController controller = new ProprietarioController();
+            Proprietario user = controller.login(email, senha);
+            if (user != null) {
+                Session.getInstance().setUser(user);
+                FrHome home = new FrHome();
+                home.setVisible(true);
+                this.dispose();
+            } else {
+                JOptionPane.showMessageDialog(this, "Email ou senha inválidos.", "Erro de login", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception ex) {
+            logger.log(java.util.logging.Level.SEVERE, "Erro no login", ex);
+            JOptionPane.showMessageDialog(this, "Erro ao tentar logar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEntrarMouseClicked
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -332,7 +373,6 @@ public class FrLogin extends javax.swing.JFrame {
     private javax.swing.JPanel areaSenha;
     private view.components.PanelRound body;
     private javax.swing.JButton btnEntrar;
-    private javax.swing.JPanel divisor;
     private view.components.PanelRound header;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

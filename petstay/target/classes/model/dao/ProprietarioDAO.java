@@ -130,4 +130,35 @@ public class ProprietarioDAO implements IDao {
 
         return list;
     }
+
+    public Proprietario validateLogin(String email, String senha) {
+        Proprietario resultado = null;
+        sql = "SELECT * FROM proprietario WHERE email = ? AND senha = ?";
+        try {
+            connection = Persistencia.getConnection();
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, email);
+            statement.setString(2, senha);
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                resultado = new Proprietario(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("email"),
+                        rs.getString("telefone"),
+                        rs.getString("senha"),
+                        rs.getString("cpf"),
+                        rs.getBoolean("ativo")
+                );
+            }
+            statement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao buscar Proprietário por email/senha: " + e.getMessage(), e);
+        } finally {
+            Persistencia.closeConnection();
+        }
+
+        return resultado;
+    }
 }
