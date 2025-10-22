@@ -1,13 +1,17 @@
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\controller\ProprietarioController.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\factory\Persistencia.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\model\dao\IDao.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\model\dao\ProprietarioDAO.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\model\Proprietario.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\model\Session.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\components\PanelRound.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\components\win_button\Button.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\components\win_button\WinButton.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\FrCadastrar.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\FrHome.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\FrLogin.java
-C:\Users\lohra\OneDrive\Documentos\Trabalhos LPS\PetStay\petstay\src\main\java\view\Main.java
+/home/marques/Documents/PetStay/petstay/src/main/java/controller/ProprietarioController.java
+/home/marques/Documents/PetStay/petstay/src/main/java/factory/Persistencia.java
+/home/marques/Documents/PetStay/petstay/src/main/java/model/Avaliacoes.java
+/home/marques/Documents/PetStay/petstay/src/main/java/model/Endereco.java
+/home/marques/Documents/PetStay/petstay/src/main/java/model/Funcionario.java
+/home/marques/Documents/PetStay/petstay/src/main/java/model/Pessoa.java
+/home/marques/Documents/PetStay/petstay/src/main/java/model/Proprietario.java
+/home/marques/Documents/PetStay/petstay/src/main/java/model/Session.java
+/home/marques/Documents/PetStay/petstay/src/main/java/model/dao/IDao.java
+/home/marques/Documents/PetStay/petstay/src/main/java/model/dao/ProprietarioDAO.java
+/home/marques/Documents/PetStay/petstay/src/main/java/view/FrCadastrar.java
+/home/marques/Documents/PetStay/petstay/src/main/java/view/FrHome.java
+/home/marques/Documents/PetStay/petstay/src/main/java/view/FrLogin.java
+/home/marques/Documents/PetStay/petstay/src/main/java/view/Main.java
+/home/marques/Documents/PetStay/petstay/src/main/java/view/components/PanelRound.java
+/home/marques/Documents/PetStay/petstay/src/main/java/view/components/win_button/Button.java
+/home/marques/Documents/PetStay/petstay/src/main/java/view/components/win_button/WinButton.java
