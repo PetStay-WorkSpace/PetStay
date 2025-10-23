@@ -1,6 +1,6 @@
 package model;
 
-public class Reservas {
+public class Reserva {
     private int id_reserva;
     private int id_pet;
     private String nome;
@@ -9,7 +9,7 @@ public class Reservas {
     private double peso;
     private boolean ativo;
 
-    public Reservas() {
+    public Reserva() {
         this.id_reserva = 0;
         this.id_pet = 0;
         this.nome = "";
@@ -19,7 +19,7 @@ public class Reservas {
         this.ativo = false;
     }
 
-    public Reservas(int id_reserva, int id_pet, String nome, String raca, String especie, double peso, boolean ativo) {
+    public Reserva(int id_reserva, int id_pet, String nome, String raca, String especie, double peso, boolean ativo) {
         this.id_reserva = id_reserva;
         this.id_pet = id_pet;
         this.nome = nome;
@@ -29,7 +29,6 @@ public class Reservas {
         this.ativo = ativo;
     }
 
-    // Getters e Setters
     public int getId_reserva() {
         return id_reserva;
     }

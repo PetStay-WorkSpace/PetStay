@@ -1,6 +1,6 @@
 package model;
 
-public class Servicos {
+public class Servico {
     private int id_servico;
     private String nome;
     private String descricao;
@@ -8,7 +8,7 @@ public class Servicos {
     private double valor;
     private boolean ativo;
 
-    public Servicos() {
+    public Servico() {
         this.id_servico = 0;
         this.nome = "";
         this.descricao = "";
@@ -17,7 +17,7 @@ public class Servicos {
         this.ativo = false;
     }
 
-    public Servicos(int id_servico, String nome, String descricao, String tipo, double valor, boolean ativo) {
+    public Servico(int id_servico, String nome, String descricao, String tipo, double valor, boolean ativo) {
         this.id_servico = id_servico;
         this.nome = nome;
         this.descricao = descricao;

@@ -2,14 +2,14 @@ package model;
 
 import java.time.LocalDateTime;
 
-public class Faturas {
+public class Fatura {
     private int id_fatura;
     private LocalDateTime data_emissao;
     private double valor_pagamento;
     private String metodo_pagamento;
     private String status;
 
-    public Faturas() {
+    public Fatura() {
         this.id_fatura = 0;
         this.data_emissao = null;
         this.valor_pagamento = 0.0;
@@ -18,7 +18,7 @@ public class Faturas {
     }
 
    
-    public Faturas(int id_fatura, LocalDateTime data_emissao, double valor_pagamento, String metodo_pagamento, String status) {
+    public Fatura(int id_fatura, LocalDateTime data_emissao, double valor_pagamento, String metodo_pagamento, String status) {
         this.id_fatura = id_fatura;
         this.data_emissao = data_emissao;
         this.valor_pagamento = valor_pagamento;
