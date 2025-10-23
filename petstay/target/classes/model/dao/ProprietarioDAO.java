@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author lohra
  */
-public class ProprietarioDAO implements IDao {
+public class ProprietarioDAO implements IDao<Proprietario> {
 
     protected Connection connection;
     private PreparedStatement statement;
@@ -21,21 +21,17 @@ public class ProprietarioDAO implements IDao {
     }
 
     @Override
-    public void save(Object obj) {
-        Proprietario proprietario = (Proprietario) obj;
-
+    public void save(Proprietario p) {
         sql = "INSERT INTO proprietario(nome, email, telefone, senha, cpf, ativo) VALUES (?,?,?,?,?,?)";
         try {
             connection = Persistencia.getConnection();
             statement = connection.prepareStatement(sql);
-
-            statement.setString(1, proprietario.getNome());
-            statement.setString(2, proprietario.getEmail());
-            statement.setString(3, proprietario.getTelefone());
-            statement.setString(4, proprietario.getSenha());
-            statement.setString(5, proprietario.getCpf());
-            statement.setBoolean(6, proprietario.isAtivo());
-
+            statement.setString(1, p.getNome());
+            statement.setString(2, p.getEmail());
+            statement.setString(3, p.getTelefone());
+            statement.setString(4, p.getSenha());
+            statement.setString(5, p.getCpf());
+            statement.setBoolean(6, p.isAtivo());
             statement.execute();
             statement.close();
         } catch (SQLException e) {
@@ -46,19 +42,15 @@ public class ProprietarioDAO implements IDao {
     }
 
     @Override
-    public boolean delete(Object obj) {
-        Proprietario proprietario = (Proprietario) obj;
+    public boolean delete(Proprietario p) {
         sql = "DELETE FROM proprietario WHERE id = ?";
-
         try {
             connection = Persistencia.getConnection();
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, proprietario.getId());
-
-            int linhasAfetadas = statement.executeUpdate();
+            statement.setInt(1, p.getId());
+            int linhas = statement.executeUpdate();
             statement.close();
-
-            return linhasAfetadas > 0;
+            return linhas > 0;
         } catch (SQLException e) {
             throw new RuntimeException("Erro ao excluir Proprietário: " + e.getMessage(), e);
         } finally {
@@ -67,17 +59,14 @@ public class ProprietarioDAO implements IDao {
     }
 
     @Override
-    public Object find(Object obj) {
-        Proprietario proprietario = (Proprietario) obj;
+    public Proprietario find(Proprietario p) {
         Proprietario resultado = null;
-
         sql = "SELECT * FROM proprietario WHERE id = ?";
         try {
             connection = Persistencia.getConnection();
             statement = connection.prepareStatement(sql);
-            statement.setInt(1, proprietario.getId());
+            statement.setInt(1, p.getId());
             ResultSet rs = statement.executeQuery();
-
             if (rs.next()) {
                 resultado = new Proprietario(
                         rs.getInt("id"),
@@ -95,22 +84,19 @@ public class ProprietarioDAO implements IDao {
         } finally {
             Persistencia.closeConnection();
         }
-
         return resultado;
     }
 
     @Override
-    public List<Object> findAll() {
-        List<Object> list = new ArrayList<>();
-
+    public List<Proprietario> findAll() {
+        List<Proprietario> list = new ArrayList<>();
         sql = "SELECT * FROM proprietario ORDER BY UPPER(nome)";
         try {
             connection = Persistencia.getConnection();
             statement = connection.prepareStatement(sql);
             ResultSet rs = statement.executeQuery();
-
             while (rs.next()) {
-                Proprietario proprietario = new Proprietario(
+                Proprietario p = new Proprietario(
                         rs.getInt("id"),
                         rs.getString("nome"),
                         rs.getString("email"),
@@ -119,7 +105,7 @@ public class ProprietarioDAO implements IDao {
                         rs.getString("cpf"),
                         rs.getBoolean("ativo")
                 );
-                list.add(proprietario);
+                list.add(p);
             }
             statement.close();
         } catch (SQLException e) {
@@ -127,7 +113,6 @@ public class ProprietarioDAO implements IDao {
         } finally {
             Persistencia.closeConnection();
         }
-
         return list;
     }
 
@@ -140,7 +125,6 @@ public class ProprietarioDAO implements IDao {
             statement.setString(1, email);
             statement.setString(2, senha);
             ResultSet rs = statement.executeQuery();
-
             if (rs.next()) {
                 resultado = new Proprietario(
                         rs.getInt("id"),
@@ -158,7 +142,6 @@ public class ProprietarioDAO implements IDao {
         } finally {
             Persistencia.closeConnection();
         }
-
         return resultado;
     }
 }

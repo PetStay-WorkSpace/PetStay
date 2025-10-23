@@ -21,13 +21,10 @@ public class ProprietarioController {
         PD.save(proprietario);
     }
 
-    public List<Object> findAll() {
+    public List<Proprietario> findAll() {
         return PD.findAll();
     }
 
-    /**
-     * Attempt to login with email and senha. Returns the Proprietario if successful or null.
-     */
     public Proprietario login(String email, String senha) {
         return PD.validateLogin(email, senha);
     }

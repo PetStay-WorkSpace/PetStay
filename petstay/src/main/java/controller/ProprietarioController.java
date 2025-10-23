@@ -21,7 +21,7 @@ public class ProprietarioController {
         PD.save(proprietario);
     }
 
-    public List<Object> findAll() {
+    public List<Proprietario> findAll() {
         return PD.findAll();
     }
 

@@ -2,9 +2,12 @@
 /home/marques/Documents/PetStay/petstay/src/main/java/factory/Persistencia.java
 /home/marques/Documents/PetStay/petstay/src/main/java/model/Avaliacoes.java
 /home/marques/Documents/PetStay/petstay/src/main/java/model/Endereco.java
+/home/marques/Documents/PetStay/petstay/src/main/java/model/Faturas.java
 /home/marques/Documents/PetStay/petstay/src/main/java/model/Funcionario.java
 /home/marques/Documents/PetStay/petstay/src/main/java/model/Pessoa.java
 /home/marques/Documents/PetStay/petstay/src/main/java/model/Proprietario.java
+/home/marques/Documents/PetStay/petstay/src/main/java/model/Reservas.java
+/home/marques/Documents/PetStay/petstay/src/main/java/model/Servicos.java
 /home/marques/Documents/PetStay/petstay/src/main/java/model/Session.java
 /home/marques/Documents/PetStay/petstay/src/main/java/model/dao/IDao.java
 /home/marques/Documents/PetStay/petstay/src/main/java/model/dao/ProprietarioDAO.java

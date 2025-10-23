@@ -1,4 +1,7 @@
+model/Faturas.class
 model/Funcionario.class
 model/Avaliacoes.class
+model/Reservas.class
 model/Endereco.class
 model/Pessoa.class
+model/Servicos.class
