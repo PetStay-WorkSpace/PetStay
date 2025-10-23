@@ -337,7 +337,7 @@ public class FrCadastrar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIrParaLoginMouseClicked
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-        // Fazer o Cadastro de Proprietario
+            // Fazer o Cadastro de Proprietario
         try {
             String nome = edtNome.getText().trim();
             String telefone = edtTelefone.getText().trim();

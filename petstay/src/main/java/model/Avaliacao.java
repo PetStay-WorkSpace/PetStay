@@ -3,19 +3,21 @@ package model;
 import java.time.LocalDateTime;
 
 public class Avaliacoes {
+    private int id_hotel;
     private int id_avaliacao;
     private double nota;
     private String comentarios;
     private LocalDateTime data;
 
     public Avaliacoes() {
+        this.id_hotel = 0;
         this.id_avaliacao = 0;
         this.nota = 0.0;
         this.comentarios = "";
         this.data = LocalDateTime.now();
     }
 
-    public Avaliacoes(int avaliacoes, double nota, String comentarios, LocalDateTime data) {
+    public Avaliacoes(int id_hotel, int id_avaliacao, double nota, String comentarios, LocalDateTime data) {
         this.id_avaliacao = avaliacoes;
         this.nota = nota;
         this.comentarios = comentarios;
@@ -58,7 +60,8 @@ public class Avaliacoes {
     @Override
     public String toString() {
         return "Avaliacoes{" +
-                "avaliacoes=" + id_avaliacao +
+                "hotel=" + id_hotel +
+                ", avaliacoes=" + id_avaliacao +
                 ", nota=" + nota +
                 ", comentarios='" + comentarios + '\'' +
                 ", data=" + data +
