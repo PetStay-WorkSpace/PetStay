@@ -15,7 +15,7 @@ import model.Session;
  * @author lohran
  */
 public class FrCadastrar extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrCadastrar.class.getName());
 
     /**
@@ -111,9 +111,9 @@ public class FrCadastrar extends javax.swing.JFrame {
         panelRound4.setBackground(new java.awt.Color(255, 255, 255));
         panelRound4.setRoundBottomLeft(30);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/Logo.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo.png"))); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/bg_cadastro.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bg_cadastro.png"))); // NOI18N
 
         javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
         panelRound4.setLayout(panelRound4Layout);
@@ -227,7 +227,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         btnEntrar.setBackground(new java.awt.Color(0, 130, 243));
         btnEntrar.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/arrow-small-right.png"))); // NOI18N
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow-small-right.png"))); // NOI18N
         btnEntrar.setText("Cadastrar");
         btnEntrar.setToolTipText("");
         btnEntrar.setBorder(null);
@@ -332,7 +332,7 @@ public class FrCadastrar extends javax.swing.JFrame {
     private void btnIrParaLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIrParaLoginMouseClicked
         FrLogin login = new FrLogin();
         login.setVisible(true);
-        
+
         this.dispose();
     }//GEN-LAST:event_btnIrParaLoginMouseClicked
 
@@ -371,12 +371,12 @@ public class FrCadastrar extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

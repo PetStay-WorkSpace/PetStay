@@ -1,18 +1,20 @@
 package controller;
 
 import model.Avaliacao;
-import model.dao.AvaliacaoDAO;
+import model.dao.AvaliacaoRepository;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+import javax.persistence.EntityManager;
 
 public class AvaliacaoController {
 
-    private AvaliacaoDAO AD;
+    private AvaliacaoRepository AD;
+    private EntityManager em;
 
     public AvaliacaoController() {
-        this.AD = new AvaliacaoDAO();
+        em = factory.JPAUtil.getEntityManager();
+        AD = new AvaliacaoRepository(em);
     }
 
     public void save(int id_hotel, double nota, String comentarios) {
@@ -20,21 +22,21 @@ public class AvaliacaoController {
         AD.save(avaliacao);
     }
 
-    public boolean delete(int id_avaliacao) {
+    public void delete(int id_avaliacao) {
         Avaliacao avaliacao = new Avaliacao();
         avaliacao.setId_avaliacao(id_avaliacao);
-        return AD.delete(avaliacao);
+        AD.delete(avaliacao);
     }
 
     public Avaliacao find(int id_avaliacao) {
-        Avaliacao avaliacao = new Avaliacao();
-        avaliacao.setId_avaliacao(id_avaliacao);
-        return AD.find(avaliacao);
+        return AD.find(id_avaliacao);
     }
 
     public List<Avaliacao> findAll() {
         return AD.findAll();
     }
-    
-    
+
+    public void close() {
+        if (em != null) em.close();
+    }
 }
