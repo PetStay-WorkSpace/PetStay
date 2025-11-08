@@ -227,7 +227,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         btnEntrar.setBackground(new java.awt.Color(0, 130, 243));
         btnEntrar.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow-small-right.png"))); // NOI18N
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/arrow-small-right.png"))); // NOI18N
         btnEntrar.setText("Cadastrar");
         btnEntrar.setToolTipText("");
         btnEntrar.setBorder(null);
