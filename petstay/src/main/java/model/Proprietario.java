@@ -1,5 +1,8 @@
 package model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Proprietario extends Pessoa {
     
     public Proprietario() {

@@ -1,42 +1,70 @@
 package controller;
 
 import model.Avaliacao;
-import model.dao.AvaliacaoRepository;
+import model.dao.AvaliacaoDAO;
+import factory.DatabaseJPA;
 
+import javax.persistence.EntityManager;
 import java.time.LocalDateTime;
 import java.util.List;
-import javax.persistence.EntityManager;
 
 public class AvaliacaoController {
 
-    private AvaliacaoRepository AD;
-    private EntityManager em;
+    private final AvaliacaoDAO avaliacaoDAO;
+    private final EntityManager entityManager;
 
     public AvaliacaoController() {
-        em = factory.JPAUtil.getEntityManager();
-        AD = new AvaliacaoRepository(em);
+        this.entityManager = DatabaseJPA.getInstance().getEntityManager();
+        this.avaliacaoDAO = new AvaliacaoDAO(entityManager);
     }
 
-    public void save(int id_hotel, double nota, String comentarios) {
-        Avaliacao avaliacao = new Avaliacao(id_hotel, 0, nota, comentarios, LocalDateTime.now());
-        AD.save(avaliacao);
+    public boolean save(int idHotel, double nota, String comentarios) {
+        try {
+            Avaliacao avaliacao = new Avaliacao(idHotel, 0, nota, comentarios, LocalDateTime.now());
+            avaliacaoDAO.save(avaliacao);
+            System.out.println(" Avaliação salva com sucesso!");
+            return true;
+        } catch (Exception e) {
+            System.err.println(" Erro ao salvar avaliação: " + e.getMessage());
+            return false;
+        }
     }
 
-    public void delete(int id_avaliacao) {
-        Avaliacao avaliacao = new Avaliacao();
-        avaliacao.setId_avaliacao(id_avaliacao);
-        AD.delete(avaliacao);
+    public boolean delete(int idAvaliacao) {
+        try {
+            Avaliacao avaliacao = new Avaliacao();
+            avaliacao.setId_avaliacao(idAvaliacao);
+            avaliacaoDAO.delete(avaliacao);
+            System.out.println("️ Avaliação removida com sucesso!");
+            return true;
+        } catch (Exception e) {
+            System.err.println(" Erro ao deletar avaliação: " + e.getMessage());
+            return false;
+        }
     }
 
-    public Avaliacao find(int id_avaliacao) {
-        return AD.find(id_avaliacao);
+    public Avaliacao find(int idAvaliacao) {
+        try {
+            return avaliacaoDAO.find(idAvaliacao);
+        } catch (Exception e) {
+            System.err.println(" Erro ao buscar avaliação: " + e.getMessage());
+            return null;
+        }
     }
 
     public List<Avaliacao> findAll() {
-        return AD.findAll();
+        try {
+            return avaliacaoDAO.findAll();
+        } catch (Exception e) {
+            System.err.println(" Erro ao listar avaliações: " + e.getMessage());
+            return List.of(); 
+        }
     }
 
     public void close() {
-        if (em != null) em.close();
+        if (entityManager != null && entityManager.isOpen()) {
+            entityManager.close();
+            System.out.println(" EntityManager fechado com sucesso.");
+        }
     }
 }
