@@ -1,67 +1,67 @@
 package model.dao;
 
-import model.Reserva;
+import model.Avaliacao;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class ReservaDAO implements IDao<Reserva> {
+public class AvaliacaoDAO implements IDao<Avaliacao> {
 
     private final EntityManager entityManager;
 
-    public ReservaDAO(EntityManager entityManager) {
+    public AvaliacaoDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-
+    
     @Override
-    public void save(Reserva r) {
+    public void save(Avaliacao a) {
         try {
             entityManager.getTransaction().begin();
-            entityManager.persist(r);
+            entityManager.persist(a);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
-            System.err.println("Erro ao salvar reserva: " + e.getMessage());
+            throw e;
         }
     }
-
-    public void update(Reserva r) {
+    
+    public void update(Avaliacao a) {
         try {
             entityManager.getTransaction().begin();
-            entityManager.merge(r);
+            entityManager.merge(a);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
-            System.err.println("Erro ao atualizar reserva: " + e.getMessage());
+            throw e;
         }
     }
-
+    
     @Override
-    public void delete(Reserva r) {
+    public void delete(Avaliacao a) {
         try {
             entityManager.getTransaction().begin();
-            Reserva ref = entityManager.find(Reserva.class, r.getId_reserva());
+            Avaliacao ref = entityManager.find(Avaliacao.class, a.getId_avaliacao());
             if (ref != null) {
                 entityManager.remove(ref);
             } else {
-                System.out.println("Reserva não encontrada para exclusão");
+                System.out.println("Avaliação não encontrada para exclusão.");
             }
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
-            System.err.println("Erro ao excluir reserva: " + e.getMessage());
+            throw e;
         }
     }
-
+    
     @Override
-    public Reserva find(int id) {
-        return entityManager.find(Reserva.class, id);
+    public Avaliacao find(int id) {
+        return entityManager.find(Avaliacao.class, id);
     }
-
+    
     @Override
-    public List<Reserva> findAll() {
-        String jpql = "SELECT r FROM Reserva r ORDER BY r.id_reserva DESC";
-        TypedQuery<Reserva> query = entityManager.createQuery(jpql, Reserva.class);
+    public List<Avaliacao> findAll() {
+        String jpql = "SELECT * FROM Avaliacao a ORDER BY a.data DESC";
+        TypedQuery<Avaliacao> query = entityManager.createQuery(jpql, Avaliacao.class);
         return query.getResultList();
     }
 }
