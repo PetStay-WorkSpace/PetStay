@@ -8,8 +8,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.JOptionPane;
+import model.Hotel;
 import model.Session;
 import model.Proprietario;
+import view.components.panelCards;
+import view.components.hoteis.cardHotel;
 
 /**
  *
@@ -63,11 +66,20 @@ public class FrHome extends javax.swing.JFrame {
         try {
             Proprietario user = Session.getInstance().getUser();
             if (user != null && user.getNome() != null && !user.getNome().isEmpty()) {
-                jLabel2.setText(user.getNome());
+                userName.setText(user.getNome());
             }
         } catch (Exception ex) {
             logger.log(java.util.logging.Level.FINE, "No session user available", ex);
         }
+    }
+    
+    public void addCard(Hotel data) {
+        //importar dados dos Hoteis
+        cardHotel card = new cardHotel();
+        card.setData(data);
+        panelCards.add(card);
+        panelCards.repaint();
+        panelCards.revalidate();
     }
 
     /**
@@ -79,6 +91,11 @@ public class FrHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dialog_cadProprietario = new javax.swing.JDialog();
+        panelRound1 = new view.components.PanelRound();
+        panelRound3 = new view.components.PanelRound();
+        jLabel4 = new javax.swing.JLabel();
+        winButton2 = new view.components.win_button.WinButton();
         painelGeral = new view.components.PanelRound();
         header = new view.components.PanelRound();
         winButton1 = new view.components.win_button.WinButton();
@@ -86,7 +103,7 @@ public class FrHome extends javax.swing.JFrame {
         panelRound4 = new view.components.PanelRound();
         area_rodape = new view.components.PanelRound();
         btnLogout = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        userName = new javax.swing.JLabel();
         btn_home = new view.components.PanelRound();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -111,14 +128,73 @@ public class FrHome extends javax.swing.JFrame {
         panelRound2 = new view.components.PanelRound();
         tabbledPanel = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        panelCards1 = new view.components.panelCards();
+        card_hotel1 = new view.components.hoteis.cardHotel();
+        card_hotel2 = new view.components.hoteis.cardHotel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
+        jLabel18 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
+
+        dialog_cadProprietario.setTitle("Cadastrar Proprietário");
+        dialog_cadProprietario.setBackground(new java.awt.Color(247, 247, 248));
+        dialog_cadProprietario.setFont(new java.awt.Font("Poppins", 0, 10)); // NOI18N
+
+        panelRound1.setBackground(new java.awt.Color(247, 247, 248));
+
+        jLabel4.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel4.setText("Cadastrar Proprietário");
+
+        javax.swing.GroupLayout panelRound3Layout = new javax.swing.GroupLayout(panelRound3);
+        panelRound3.setLayout(panelRound3Layout);
+        panelRound3Layout.setHorizontalGroup(
+            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addContainerGap(239, Short.MAX_VALUE))
+            .addComponent(winButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelRound3Layout.setVerticalGroup(
+            panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound3Layout.createSequentialGroup()
+                .addComponent(winButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(33, 33, 33))
+        );
+
+        javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
+        panelRound1.setLayout(panelRound1Layout);
+        panelRound1Layout.setHorizontalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        panelRound1Layout.setVerticalGroup(
+            panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound1Layout.createSequentialGroup()
+                .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 429, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout dialog_cadProprietarioLayout = new javax.swing.GroupLayout(dialog_cadProprietario.getContentPane());
+        dialog_cadProprietario.getContentPane().setLayout(dialog_cadProprietarioLayout);
+        dialog_cadProprietarioLayout.setHorizontalGroup(
+            dialog_cadProprietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        dialog_cadProprietarioLayout.setVerticalGroup(
+            dialog_cadProprietarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PetStay");
@@ -181,8 +257,8 @@ public class FrHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jLabel2.setText("Lohran");
+        userName.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        userName.setText("Lohran");
 
         javax.swing.GroupLayout area_rodapeLayout = new javax.swing.GroupLayout(area_rodape);
         area_rodape.setLayout(area_rodapeLayout);
@@ -190,7 +266,7 @@ public class FrHome extends javax.swing.JFrame {
             area_rodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, area_rodapeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(userName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogout)
                 .addContainerGap())
@@ -201,7 +277,7 @@ public class FrHome extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(area_rodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(6, 6, 6))
         );
 
@@ -522,57 +598,131 @@ public class FrHome extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(247, 247, 248));
         jPanel1.setForeground(new java.awt.Color(247, 247, 248));
 
-        jLabel4.setText("Hoteis");
+        jScrollPane2.setBackground(new java.awt.Color(247, 247, 248));
+        jScrollPane2.setBorder(null);
+        jScrollPane2.setForeground(new java.awt.Color(247, 247, 248));
+
+        panelCards1.add(card_hotel1);
+        panelCards1.add(card_hotel2);
+
+        jScrollPane2.setViewportView(panelCards1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addGap(0, 751, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addGap(0, 404, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tabbledPanel.addTab("tab1", jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(247, 247, 248));
 
+        jLabel5.setFont(new java.awt.Font("Poppins SemiBold", 0, 18)); // NOI18N
         jLabel5.setText("Proprietarios");
+
+        jButton1.setBackground(new java.awt.Color(0, 130, 243));
+        jButton1.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTable1.setBackground(new java.awt.Color(247, 247, 248));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "CPF", "Email", "Telefone"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addGap(0, 718, Short.MAX_VALUE))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel5)
-                .addGap(0, 404, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tabbledPanel.addTab("tab2", jPanel2);
 
         jPanel3.setBackground(new java.awt.Color(247, 247, 248));
 
+        jLabel18.setText("jLabel18");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 785, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel18)
+                .addGap(0, 742, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel18)
+                .addGap(0, 454, Short.MAX_VALUE))
         );
 
         tabbledPanel.addTab("tab3", jPanel3);
@@ -587,7 +737,7 @@ public class FrHome extends javax.swing.JFrame {
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         tabbledPanel.addTab("tab4", jPanel4);
@@ -602,7 +752,7 @@ public class FrHome extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         tabbledPanel.addTab("tab5", jPanel5);
@@ -617,7 +767,7 @@ public class FrHome extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         tabbledPanel.addTab("tab6", jPanel6);
@@ -632,7 +782,7 @@ public class FrHome extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
+            .addGap(0, 470, Short.MAX_VALUE)
         );
 
         tabbledPanel.addTab("tab7", jPanel7);
@@ -729,31 +879,9 @@ public class FrHome extends javax.swing.JFrame {
         tabbledPanel.setSelectedIndex(0);
     }//GEN-LAST:event_btn_homeMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrHome().setVisible(true));
-    }
-
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private view.components.PanelRound area_rodape;
     private view.components.PanelRound body;
@@ -765,7 +893,11 @@ public class FrHome extends javax.swing.JFrame {
     private view.components.PanelRound btn_relatorios;
     private view.components.PanelRound btn_reservas;
     private view.components.PanelRound btn_servicos;
+    private view.components.hoteis.cardHotel card_hotel1;
+    private view.components.hoteis.cardHotel card_hotel2;
+    private javax.swing.JDialog dialog_cadProprietario;
     private view.components.PanelRound header;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -775,7 +907,7 @@ public class FrHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -790,10 +922,18 @@ public class FrHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
     private view.components.PanelRound painelGeral;
+    private view.components.panelCards panelCards1;
+    private view.components.PanelRound panelRound1;
     private view.components.PanelRound panelRound2;
+    private view.components.PanelRound panelRound3;
     private view.components.PanelRound panelRound4;
     private javax.swing.JTabbedPane tabbledPanel;
+    private javax.swing.JLabel userName;
     private view.components.win_button.WinButton winButton1;
+    private view.components.win_button.WinButton winButton2;
     // End of variables declaration//GEN-END:variables
 }

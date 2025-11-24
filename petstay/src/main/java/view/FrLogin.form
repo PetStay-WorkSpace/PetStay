@@ -312,6 +312,7 @@
                           <Font name="Poppins" size="12" style="0"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="2"/>
+                        <Property name="text" type="java.lang.String" value="teste"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                             <LineBorder roundedCorners="true">
@@ -375,6 +376,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins" size="12" style="0"/>
                         </Property>
+                        <Property name="text" type="java.lang.String" value="teste"/>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">

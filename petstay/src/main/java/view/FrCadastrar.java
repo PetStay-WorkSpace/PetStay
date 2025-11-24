@@ -227,7 +227,7 @@ public class FrCadastrar extends javax.swing.JFrame {
         btnEntrar.setBackground(new java.awt.Color(0, 130, 243));
         btnEntrar.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
-        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/images/arrow-small-right.png"))); // NOI18N
+        btnEntrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/arrow-small-right.png"))); // NOI18N
         btnEntrar.setText("Cadastrar");
         btnEntrar.setToolTipText("");
         btnEntrar.setBorder(null);
@@ -367,32 +367,6 @@ public class FrCadastrar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao cadastrar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEntrarMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrCadastrar().setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel alignCenter;

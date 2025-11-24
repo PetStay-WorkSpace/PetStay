@@ -488,7 +488,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/view/images/arrow-small-right.png"/>
+                      <Image iconType="3" name="/images/arrow-small-right.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Cadastrar"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
