@@ -4,22 +4,34 @@
  */
 package view;
 
+import view.dialog.CadastroUsuarioDialog;
+import view.dialog.CadastroPetsDialog;
+import view.dialog.CadastroReservaDialog;
+import controller.PetsController;
+import controller.ProprietarioController;
+import controller.ReservaController;
+import controller.ServicoController;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import model.Hotel;
 import model.Session;
 import model.Proprietario;
 import view.components.panelCards;
 import view.components.hoteis.cardHotel;
+import view.dialog.CadastroServicosDialog;
 
 /**
  *
  * @author lohran
  */
 public class FrHome extends javax.swing.JFrame {
-
+    private final ProprietarioController controller = new ProprietarioController();
+    private final PetsController petsController = new PetsController();
+    private final ReservaController reservasController = new ReservaController();
+    private final ServicoController servicoController = new ServicoController();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrHome.class.getName());
 
     /**
@@ -27,6 +39,10 @@ public class FrHome extends javax.swing.JFrame {
      */
     public FrHome() {
         initComponents();
+        carregarTabela();
+        carregarTabelaPets();
+        carregarTabelaReservas();
+        carregarTabelaServicos();
         setBackground(new Color(0,0,0,0));
         winButton1.initEvent(this);
         try {
@@ -81,7 +97,28 @@ public class FrHome extends javax.swing.JFrame {
         panelCards.repaint();
         panelCards.revalidate();
     }
+    private void carregarTabela() {
+        DefaultTableModel model = (DefaultTableModel) jTableProprietarios.getModel();
+        controller.carregarTabela(model);
+    }
+    
+    private void carregarTabelaPets() {
+        DefaultTableModel model = (DefaultTableModel) jTablePets.getModel();
+        petsController.carregarTabela(model);
+    }
+    
+    private void carregarTabelaReservas() {
+        DefaultTableModel model = (DefaultTableModel) jTableReservas.getModel();
+        reservasController.carregarTabela(model);
+    }
+    
+    private void carregarTabelaServicos() {
+        DefaultTableModel model = (DefaultTableModel) jTableServicos.getModel();
+        servicoController.carregarTabela(model);
+    }
 
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -129,18 +166,27 @@ public class FrHome extends javax.swing.JFrame {
         tabbledPanel = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        panelCards1 = new view.components.panelCards();
-        card_hotel1 = new view.components.hoteis.cardHotel();
-        card_hotel2 = new view.components.hoteis.cardHotel();
+        panelCards = new view.components.panelCards();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableProprietarios = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTablePets = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jLabel20 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableReservas = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTableServicos = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
 
@@ -249,14 +295,6 @@ public class FrHome extends javax.swing.JFrame {
         area_rodape.setRoundTopLeft(25);
         area_rodape.setRoundTopRight(25);
 
-        /*
-        panelRound1.setBackground(new java.awt.Color(247, 247, 248));
-        panelRound1.setRoundBottomLeft(30);
-        panelRound1.setRoundBottomRight(30);
-        panelRound1.setRoundTopLeft(30);
-        panelRound1.setRoundTopRight(30);
-        */
-
         btnLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/sair-alt.png"))); // NOI18N
         btnLogout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -290,6 +328,7 @@ public class FrHome extends javax.swing.JFrame {
         );
 
         btn_home.setBackground(new java.awt.Color(247, 247, 248));
+        btn_home.setMaximumSize(new java.awt.Dimension(135, 41));
         btn_home.setRoundBottomLeft(25);
         btn_home.setRoundBottomRight(25);
         btn_home.setRoundTopLeft(25);
@@ -328,6 +367,7 @@ public class FrHome extends javax.swing.JFrame {
         );
 
         btn_proprietarios.setBackground(new java.awt.Color(247, 247, 248));
+        btn_proprietarios.setMaximumSize(new java.awt.Dimension(135, 41));
         btn_proprietarios.setRoundBottomLeft(25);
         btn_proprietarios.setRoundBottomRight(25);
         btn_proprietarios.setRoundTopLeft(25);
@@ -366,6 +406,7 @@ public class FrHome extends javax.swing.JFrame {
         );
 
         btn_pets.setBackground(new java.awt.Color(247, 247, 248));
+        btn_pets.setMaximumSize(new java.awt.Dimension(135, 41));
         btn_pets.setRoundBottomLeft(25);
         btn_pets.setRoundBottomRight(25);
         btn_pets.setRoundTopLeft(25);
@@ -404,6 +445,7 @@ public class FrHome extends javax.swing.JFrame {
         );
 
         btn_reservas.setBackground(new java.awt.Color(247, 247, 248));
+        btn_reservas.setMaximumSize(new java.awt.Dimension(135, 41));
         btn_reservas.setRoundBottomLeft(25);
         btn_reservas.setRoundBottomRight(25);
         btn_reservas.setRoundTopLeft(25);
@@ -442,6 +484,7 @@ public class FrHome extends javax.swing.JFrame {
         );
 
         btn_servicos.setBackground(new java.awt.Color(247, 247, 248));
+        btn_servicos.setMaximumSize(new java.awt.Dimension(135, 41));
         btn_servicos.setRoundBottomLeft(25);
         btn_servicos.setRoundBottomRight(25);
         btn_servicos.setRoundTopLeft(25);
@@ -480,6 +523,7 @@ public class FrHome extends javax.swing.JFrame {
         );
 
         btn_pedidos.setBackground(new java.awt.Color(247, 247, 248));
+        btn_pedidos.setMaximumSize(new java.awt.Dimension(135, 41));
         btn_pedidos.setRoundBottomLeft(25);
         btn_pedidos.setRoundBottomRight(25);
         btn_pedidos.setRoundTopLeft(25);
@@ -518,6 +562,7 @@ public class FrHome extends javax.swing.JFrame {
         );
 
         btn_relatorios.setBackground(new java.awt.Color(247, 247, 248));
+        btn_relatorios.setMaximumSize(new java.awt.Dimension(135, 41));
         btn_relatorios.setRoundBottomLeft(25);
         btn_relatorios.setRoundBottomRight(25);
         btn_relatorios.setRoundTopLeft(25);
@@ -609,11 +654,7 @@ public class FrHome extends javax.swing.JFrame {
         jScrollPane2.setBackground(new java.awt.Color(247, 247, 248));
         jScrollPane2.setBorder(null);
         jScrollPane2.setForeground(new java.awt.Color(247, 247, 248));
-
-        panelCards1.add(card_hotel1);
-        panelCards1.add(card_hotel2);
-
-        jScrollPane2.setViewportView(panelCards1);
+        jScrollPane2.setViewportView(panelCards);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -628,7 +669,7 @@ public class FrHome extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -649,8 +690,8 @@ public class FrHome extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setBackground(new java.awt.Color(247, 247, 248));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableProprietarios.setBackground(new java.awt.Color(247, 247, 248));
+        jTableProprietarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -689,7 +730,7 @@ public class FrHome extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableProprietarios);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -708,7 +749,7 @@ public class FrHome extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -716,51 +757,255 @@ public class FrHome extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(247, 247, 248));
 
-        jLabel18.setText("jLabel18");
+        jButton2.setBackground(new java.awt.Color(0, 130, 243));
+        jButton2.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Cadastrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Poppins SemiBold", 0, 18)); // NOI18N
+        jLabel19.setText("Pets");
+
+        jTablePets.setBackground(new java.awt.Color(247, 247, 248));
+        jTablePets.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Dono", "Nome", "Raça", "Espécie"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTablePets);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel18)
-                .addGap(0, 742, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel18)
-                .addGap(0, 454, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jLabel19))
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tabbledPanel.addTab("tab3", jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(247, 247, 248));
 
+        jButton3.setBackground(new java.awt.Color(0, 130, 243));
+        jButton3.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setText("Cadastrar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setFont(new java.awt.Font("Poppins SemiBold", 0, 18)); // NOI18N
+        jLabel20.setText("Reservas");
+
+        jTableReservas.setBackground(new java.awt.Color(247, 247, 248));
+        jTableReservas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "ID Pet", "ID Cliente", "Data Inicio", "Data Fim", "Serviço", "Ativo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane4.setViewportView(jTableReservas);
+        if (jTableReservas.getColumnModel().getColumnCount() > 0) {
+            jTableReservas.getColumnModel().getColumn(6).setHeaderValue("Ativo");
+        }
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 785, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jLabel20))
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tabbledPanel.addTab("tab4", jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(247, 247, 248));
 
+        jButton4.setBackground(new java.awt.Color(0, 130, 243));
+        jButton4.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Cadastrar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setFont(new java.awt.Font("Poppins SemiBold", 0, 18)); // NOI18N
+        jLabel21.setText("Serviços");
+
+        jTableServicos.setBackground(new java.awt.Color(247, 247, 248));
+        jTableServicos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nome", "Descrição", "Tipo", "Valor", "Ativo"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane5.setViewportView(jTableServicos);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 785, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jLabel21))
+                .addGap(5, 5, 5)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         tabbledPanel.addTab("tab5", jPanel5);
@@ -775,7 +1020,7 @@ public class FrHome extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
         );
 
         tabbledPanel.addTab("tab6", jPanel6);
@@ -790,7 +1035,7 @@ public class FrHome extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 470, Short.MAX_VALUE)
+            .addGap(0, 420, Short.MAX_VALUE)
         );
 
         tabbledPanel.addTab("tab7", jPanel7);
@@ -913,8 +1158,25 @@ public class FrHome extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        new CadastroUsuarioDialog(this).setVisible(true);
+        carregarTabela();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       new CadastroPetsDialog(this).setVisible(true);
+       carregarTabelaPets();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       new CadastroReservaDialog(this).setVisible(true);
+       carregarTabelaReservas();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        new CadastroServicosDialog(this).setVisible(true);
+        carregarTabelaServicos();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private view.components.PanelRound area_rodape;
     private view.components.PanelRound body;
@@ -926,11 +1188,12 @@ public class FrHome extends javax.swing.JFrame {
     private view.components.PanelRound btn_relatorios;
     private view.components.PanelRound btn_reservas;
     private view.components.PanelRound btn_servicos;
-    private view.components.hoteis.cardHotel card_hotel1;
-    private view.components.hoteis.cardHotel card_hotel2;
     private javax.swing.JDialog dialog_cadProprietario;
     private view.components.PanelRound header;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -940,7 +1203,9 @@ public class FrHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -957,9 +1222,15 @@ public class FrHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTable jTablePets;
+    private javax.swing.JTable jTableProprietarios;
+    private javax.swing.JTable jTableReservas;
+    private javax.swing.JTable jTableServicos;
     private view.components.PanelRound painelGeral;
-    private view.components.panelCards panelCards1;
+    private view.components.panelCards panelCards;
     private view.components.PanelRound panelRound1;
     private view.components.PanelRound panelRound2;
     private view.components.PanelRound panelRound3;

@@ -6,6 +6,7 @@ import model.dao.ProprietarioDAO;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class ProprietarioController {
 
@@ -21,7 +22,7 @@ public class ProprietarioController {
         try {
             Proprietario proprietario = new Proprietario(0, nome, email, telefone, senha, cpf, ativo);
             proprietarioDAO.save(proprietario);
-            System.out.println("👤Proprietário salvo com sucesso!");
+            System.out.println("Proprietário salvo com sucesso!");
             return true;
         } catch (Exception e) {
             System.err.println("Erro ao salvar proprietário: " + e.getMessage());
@@ -52,6 +53,28 @@ public class ProprietarioController {
             return null;
         }
     }
+    
+    public void carregarTabela(DefaultTableModel model) {
+    try {
+        model.setRowCount(0); 
+
+        List<Proprietario> lista = proprietarioDAO.findAll(); 
+
+        for (Proprietario p : lista) {
+            model.addRow(new Object[]{
+                p.getId(),
+                p.getNome(),
+                p.getCpf(),
+                p.getEmail(),
+                p.getTelefone()
+            });
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        System.err.println("Erro ao carregar tabela: " + e.getMessage());
+    }
+}
 
     public void close() {
         if (entityManager != null && entityManager.isOpen()) {

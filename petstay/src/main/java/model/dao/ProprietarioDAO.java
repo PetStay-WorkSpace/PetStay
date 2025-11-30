@@ -52,7 +52,7 @@ public class ProprietarioDAO implements IDao<Proprietario> {
 
     @Override
     public List<Proprietario> findAll() {
-        String jpql = "SELECT * FROM Avaliacao a ORDER BY a.nome DESC";
+        String jpql = "SELECT p FROM Proprietario p ORDER BY p.id ASC";
         TypedQuery<Proprietario> query = entityManager.createQuery(jpql, Proprietario.class);
         return query.getResultList();
     }

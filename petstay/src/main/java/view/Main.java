@@ -16,8 +16,8 @@ public class Main {
         FrLogin login = new FrLogin();
         login.setVisible(true);  
         
-        FrCadastrar cadastrar = new FrCadastrar();
-        cadastrar.setVisible(true);  
+        //FrCadastrar cadastrar = new FrCadastrar();
+        //cadastrar.setVisible(true);  
         
         
     }
