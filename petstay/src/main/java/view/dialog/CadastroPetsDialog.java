@@ -1,8 +1,11 @@
 package view.dialog;
 
 import controller.PetsController;
+import controller.ProprietarioController;
 import javax.swing.*;
 import java.awt.Frame;
+import java.util.List;
+import model.Proprietario;
 
 public class CadastroPetsDialog extends JDialog {
 
@@ -30,6 +33,11 @@ public class CadastroPetsDialog extends JDialog {
         JLabel lblDono = new JLabel("ID Dono:");
         lblDono.setBounds(30, 30, 100, 25);
         add(lblDono);
+        
+        JButton btnBuscarDono = new JButton("Buscar");
+        btnBuscarDono.setBounds(290, 30, 80, 25);
+        btnBuscarDono.addActionListener(e -> buscarDono());
+        add(btnBuscarDono);
 
         txtDono = new JTextField();
         txtDono.setBounds(140, 30, 230, 25);
@@ -92,6 +100,34 @@ public class CadastroPetsDialog extends JDialog {
             JOptionPane.showMessageDialog(this, "ID do dono deve ser um número.");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar: " + ex.getMessage());
+        }
+    }
+    
+    private void buscarDono() {
+        ProprietarioController proprietarioController = new ProprietarioController();
+        List<Proprietario> lista = proprietarioController.findAll();
+
+        if (lista.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nenhum proprietário encontrado!");
+            return;
+        }
+
+        String[] nomes = lista.stream()
+                .map(p -> p.getId() + " - " + p.getNome())
+                .toArray(String[]::new);
+
+        String escolha = (String) JOptionPane.showInputDialog(
+                this,
+                "Selecione o Proprietário:",
+                "Buscar Dono",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                nomes,
+                nomes[0]
+        );
+
+        if (escolha != null) {
+            txtDono.setText(escolha.split(" - ")[0]);
         }
     }
 }

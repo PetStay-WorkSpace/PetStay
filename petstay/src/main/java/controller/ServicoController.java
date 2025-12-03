@@ -21,11 +21,9 @@ public class ServicoController {
         try {
             Servico servico = new Servico(0, nome, descricao, tipo, valor, ativo);
             servicoDAO.save(servico);
-            System.out.println(" Servico salvo com sucesso!");
             return true;
         } catch (Exception e) {
-            System.out.println(" Erro ao salvar servico: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Erro ao salvar serviço: " + e.getMessage(), e);
         }
         
     }
@@ -35,11 +33,9 @@ public class ServicoController {
             Servico servico = new Servico();
             servico.setId_servico(id_servico);
             servicoDAO.delete(servico);
-            System.out.println("️ Servico removida com sucesso!");
             return true;
         } catch (Exception e) {
-            System.out.println(" Erro ao deletar: " + e.getMessage());
-            return false;
+            throw new RuntimeException("Erro ao deletar serviço: " + e.getMessage(), e);
         }
     }
 
@@ -54,7 +50,6 @@ public class ServicoController {
     public void close() {
         if (entityManager != null && entityManager.isOpen()) {
             entityManager.close();
-            System.out.println(" EntityManager fechado com sucesso.");
         }
     }
     
@@ -82,7 +77,9 @@ public class ServicoController {
         List<Servico> servicos = servicoDAO.findAll();
 
         for (Servico s : servicos) {
-            nomes.add(s.getNome());
+            if(s.isAtivo()){
+                 nomes.add(s.getNome());
+            }
         }
 
     return nomes;
