@@ -4,6 +4,7 @@ package view;
 import controller.EnderecoController;
 import java.util.List;
 import model.Endereco;
+import org.mindrot.jbcrypt.BCrypt;
 
 
 /**
@@ -15,7 +16,7 @@ public class Main {
 
         FrLogin login = new FrLogin();
         login.setVisible(true);  
-        
+          
         //FrCadastrar cadastrar = new FrCadastrar();
         //cadastrar.setVisible(true);  
         

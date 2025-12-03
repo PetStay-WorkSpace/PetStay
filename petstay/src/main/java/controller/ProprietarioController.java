@@ -19,16 +19,25 @@ public class ProprietarioController {
         this.proprietarioDAO = new ProprietarioDAO(entityManager);
     }
 
-    public boolean save(String nome, String email, String telefone, String senha, String cpf, boolean ativo) {
+    public void save(String nome, String email, String telefone, String senha, String cpf, boolean ativo) throws Exception {
         try {
+            if (proprietarioDAO.findByEmail(email) != null) {
+                throw new IllegalArgumentException("Já existe um usuário com este e-mail.");
+            }
+
+            if (proprietarioDAO.findByCpf(cpf) != null) {
+                throw new IllegalArgumentException("Já existe um usuário com este CPF.");
+            }
             String senhaHash = PasswordUtil.criptografar(senha);
             Proprietario proprietario = new Proprietario(0, nome, email, telefone, senhaHash, cpf, ativo);
             proprietarioDAO.save(proprietario);
             System.out.println("Proprietário salvo com sucesso!");
-            return true;
+            
+        } catch (IllegalArgumentException e) {
+            throw e;
+            
         } catch (Exception e) {
-            System.err.println("Erro ao salvar proprietário: " + e.getMessage());
-            return false;
+            throw new Exception("Erro ao salvar proprietário no banco: " + e.getMessage());
         }
     }
 

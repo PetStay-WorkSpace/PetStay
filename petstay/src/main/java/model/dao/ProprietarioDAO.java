@@ -76,6 +76,28 @@ public class ProprietarioDAO implements IDao<Proprietario> {
             throw new RuntimeException("Erro ao validar login: " + e.getMessage(), e);
         }
     }
+    
+    public Proprietario findByEmail(String email) {
+        try {
+            return entityManager.createQuery(
+                    "SELECT p FROM Proprietario p WHERE p.email = :email", Proprietario.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null; 
+        }
+    }
+
+    public Proprietario findByCpf(String cpf) {
+        try {
+            return entityManager.createQuery(
+                    "SELECT p FROM Proprietario p WHERE p.cpf = :cpf", Proprietario.class)
+                    .setParameter("cpf", cpf)
+                    .getSingleResult();
+        } catch (Exception e) {
+            return null; 
+        }
+    }
 
 }
 

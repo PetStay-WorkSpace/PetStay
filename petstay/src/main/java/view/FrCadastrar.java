@@ -346,7 +346,7 @@ public class FrCadastrar extends javax.swing.JFrame {
             String senha = edtSenha.getText().trim();
 
             if (nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Por favor preencha Nome, Email e Senha.", "Dados incompletos", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Por favor preencha Nome, Telefone, Email, CPF e Senha.", "Dados incompletos", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -362,9 +362,14 @@ public class FrCadastrar extends javax.swing.JFrame {
             login.setVisible(true);
             this.dispose();
 
+        } catch (IllegalArgumentException ex) {
+        
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Dados inválidos", JOptionPane.WARNING_MESSAGE);
+
         } catch (Exception ex) {
-            logger.log(java.util.logging.Level.SEVERE, "Erro ao cadastrar proprietario", ex);
-            JOptionPane.showMessageDialog(this, "Erro ao cadastrar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        
+        logger.log(java.util.logging.Level.SEVERE, "Erro ao cadastrar proprietario", ex);
+        JOptionPane.showMessageDialog(this, "Erro ao cadastrar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEntrarMouseClicked
 

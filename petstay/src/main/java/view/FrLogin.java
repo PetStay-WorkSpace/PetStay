@@ -169,7 +169,7 @@ public class FrLogin extends javax.swing.JFrame {
 
         jTextField1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setText("lohranfaria305@gmail.com");
+        jTextField1.setText("anderson@gmail.com");
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jTextField1.setMaximumSize(new java.awt.Dimension(330, 40));
@@ -194,7 +194,7 @@ public class FrLogin extends javax.swing.JFrame {
         areaSenha.add(jLabel4);
 
         jPasswordField1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jPasswordField1.setText("senha");
+        jPasswordField1.setText("senha1");
         jPasswordField1.setToolTipText("");
         jPasswordField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         jPasswordField1.setMaximumSize(new java.awt.Dimension(280, 40));
