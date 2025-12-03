@@ -153,22 +153,28 @@ public class cardHotel extends javax.swing.JPanel {
 
         button_buy = new javax.swing.JButton();
         title = new javax.swing.JLabel();
-        subtitle = new javax.swing.JLabel();
         price = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        subtitle = new javax.swing.JTextArea();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setMaximumSize(new java.awt.Dimension(200, 250));
+        setMaximumSize(null);
 
         button_buy.setText("nomeBotão");
 
         title.setFont(new java.awt.Font("Poppins SemiBold", 0, 18)); // NOI18N
         title.setText("Hotel Comum");
 
-        subtitle.setText("Descrição");
-        subtitle.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
         price.setFont(new java.awt.Font("Poppins SemiBold", 0, 24)); // NOI18N
         price.setText("R$9,99");
+
+        subtitle.setColumns(20);
+        subtitle.setLineWrap(true);
+        subtitle.setRows(5);
+        subtitle.setText("dsadsadsa");
+        subtitle.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        subtitle.setCaretColor(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(subtitle);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -177,12 +183,10 @@ public class cardHotel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(button_buy, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                    .addComponent(subtitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(price)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                    .addComponent(price, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -191,8 +195,8 @@ public class cardHotel extends javax.swing.JPanel {
                 .addGap(12, 12, 12)
                 .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(subtitle, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(price)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(button_buy, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,8 +207,9 @@ public class cardHotel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button_buy;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel price;
-    private javax.swing.JLabel subtitle;
+    private javax.swing.JTextArea subtitle;
     private javax.swing.JLabel title;
     // End of variables declaration//GEN-END:variables
 }

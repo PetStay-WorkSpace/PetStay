@@ -5,6 +5,7 @@ import model.Proprietario;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import security.PasswordUtil;
 
 /**
  * @author lohra
@@ -57,18 +58,20 @@ public class ProprietarioDAO implements IDao<Proprietario> {
         return query.getResultList();
     }
 
-    public Proprietario validateLogin(String email, String senha) {
+    public Proprietario validateLogin(String email, String senhaPlain) {
         try {
-            String jpql = "SELECT p FROM Proprietario p WHERE p.email = :email AND p.senha = :senha";
+            String jpql = "SELECT p FROM Proprietario p WHERE p.email = :email";
             TypedQuery<Proprietario> query = entityManager.createQuery(jpql, Proprietario.class);
             query.setParameter("email", email);
-            query.setParameter("senha", senha);
 
             List<Proprietario> resultados = query.getResultList();
             if (!resultados.isEmpty()) {
-                return resultados.get(0); 
+                Proprietario p = resultados.get(0);
+                if (PasswordUtil.verificarSenha(senhaPlain, p.getSenha())) {
+                    return p;
+                }
             }
-            return null; 
+            return null;
         } catch (Exception e) {
             throw new RuntimeException("Erro ao validar login: " + e.getMessage(), e);
         }

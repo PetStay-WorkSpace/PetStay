@@ -1,6 +1,7 @@
 package controller;
 
 import factory.DatabaseJPA;
+import security.PasswordUtil;
 import model.Proprietario;
 import model.dao.ProprietarioDAO;
 
@@ -20,7 +21,8 @@ public class ProprietarioController {
 
     public boolean save(String nome, String email, String telefone, String senha, String cpf, boolean ativo) {
         try {
-            Proprietario proprietario = new Proprietario(0, nome, email, telefone, senha, cpf, ativo);
+            String senhaHash = PasswordUtil.criptografar(senha);
+            Proprietario proprietario = new Proprietario(0, nome, email, telefone, senhaHash, cpf, ativo);
             proprietarioDAO.save(proprietario);
             System.out.println("Proprietário salvo com sucesso!");
             return true;

@@ -13,6 +13,7 @@ import controller.ReservaController;
 import controller.ServicoController;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -83,12 +84,32 @@ public class FrHome extends javax.swing.JFrame {
             Proprietario user = Session.getInstance().getUser();
             if (user != null && user.getNome() != null && !user.getNome().isEmpty()) {
                 userName.setText(user.getNome());
-            }
+            } 
+            
+            for (int i = 0; i < 3; i++) {
+                String[] titulos = {"Hospedagem Simples", "Hospedagem Vip", "Hospedagem Premium",};
+
+                String[] subtitulos = {
+                    "Nessa hospedagem seu pet terá todos os cuidados básicos e hospedagem por 24horas",
+                    "Nessa hospedagem seu pet terá cuidados de banho e tosa e hospedagem por 24horas",
+                    "Nessa hospedagem seu pet terá cuidados premium de banho e tosa e skin care e hospedagem por 24horas",
+                };
+                
+                double[] precos = { 100, 200, 300 };
+
+                String titulo = titulos[i];
+                String subtitulo = subtitulos[i];
+                double preco = precos[i];
+
+                Hotel h = new Hotel(i, titulo, subtitulo, preco);
+
+                addCard(h);
+            }            
         } catch (Exception ex) {
             logger.log(java.util.logging.Level.FINE, "No session user available", ex);
         }
     }
-    
+        
     public void addCard(Hotel data) {
         //importar dados dos Hoteis
         cardHotel card = new cardHotel();
