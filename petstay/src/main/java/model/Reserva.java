@@ -16,10 +16,14 @@ public class Reserva {
     private String data_fim;
     private String servico;
     private boolean ativo;
+    private int modelo;
+    private double preco;
+    private String nome;
+    private String descricao;
 
     public Reserva() {}
 
-    public Reserva(int id_reserva, int id_pet, int id_cliente, String data_inicio, String data_fim, String servico, boolean ativo) {
+    public Reserva(int id_reserva, int id_pet, int id_cliente, String data_inicio, String data_fim, String servico, boolean ativo, int modelo, double preco, String nome, String descricao) {
         this.id_reserva = id_reserva;
         this.id_pet = id_pet;
         this.id_cliente = id_cliente;
@@ -27,6 +31,10 @@ public class Reserva {
         this.data_fim = data_fim;
         this.servico = servico;
         this.ativo = ativo;
+        this.modelo = modelo;
+        this.preco = 0.0;
+        this.nome = nome;
+        this.descricao = descricao;
     }
 
     public int getId_reserva() {
@@ -78,6 +86,34 @@ public class Reserva {
         this.ativo = ativo; 
     }
 
+    public int getModelo() {
+        return modelo;
+    }
+    public void setModelo(int modelo) {
+        this.modelo = modelo;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
     @Override
     public String toString() {
         return "Reserva{" +
@@ -88,6 +124,10 @@ public class Reserva {
                 ", data_fim='" + data_fim + '\'' +
                 ", servico='" + servico + '\'' +
                 ", ativo=" + ativo +
+                ", modelo=" + modelo +
+                ", preco=" + preco +
+                ", nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
                 '}';
     }
 }

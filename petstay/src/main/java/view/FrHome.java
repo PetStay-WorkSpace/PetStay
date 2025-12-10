@@ -13,6 +13,7 @@ import controller.ReservaController;
 import controller.ServicoController;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.List;
 import java.util.Random;
 import javax.swing.plaf.basic.BasicTabbedPaneUI;
 import javax.swing.JOptionPane;
@@ -20,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Hotel;
 import model.Session;
 import model.Proprietario;
+import model.Reserva;
 import view.components.panelCards;
 import view.components.hoteis.cardHotel;
 import view.dialog.CadastroServicosDialog;
@@ -86,27 +88,25 @@ public class FrHome extends javax.swing.JFrame {
                 userName.setText(user.getNome());
             } 
             
-            for (int i = 0; i < 3; i++) {
-                String[] titulos = {"Hospedagem Simples", "Hospedagem Vip", "Hospedagem Premium",};
+            for (int modelo = 1; modelo <= 3; modelo++) {
+                List<Reserva> reservasModelo = reservasController.findByModelo(modelo);
 
-                String[] subtitulos = {
-                    "Nessa hospedagem seu pet terá todos os cuidados básicos e hospedagem por 24horas",
-                    "Nessa hospedagem seu pet terá cuidados de banho e tosa e hospedagem por 24horas",
-                    "Nessa hospedagem seu pet terá cuidados premium de banho e tosa e skin care e hospedagem por 24horas",
-                };
+                System.out.println("Reservas para o modelo " + modelo + ": " + reservasModelo.size());
                 
-                double[] precos = { 100, 200, 300 };
-
-                String titulo = titulos[i];
-                String subtitulo = subtitulos[i];
-                double preco = precos[i];
-
-                Hotel h = new Hotel(i, titulo, subtitulo, preco);
-
-                addCard(h);
+                if (!reservasModelo.isEmpty()) {
+                    for (Reserva reserva : reservasModelo) {
+                        Hotel h = new Hotel(
+                            reserva.getId_reserva(), 
+                            reserva.getNome(),
+                            reserva.getDescricao(),
+                            reserva.getPreco()
+                        );
+                        addCard(h);
+                    }
+                }
             }            
         } catch (Exception ex) {
-            logger.log(java.util.logging.Level.FINE, "No session user available", ex);
+            logger.log(java.util.logging.Level.FINE, "Erro ao carregar reservas: " + ex.getMessage(), ex);
         }
     }
         

@@ -21,6 +21,10 @@ public class CadastroReservaDialog extends JDialog {
     private DateTimePicker dateFim;
     private JComboBox<String> cbServico;
     private JCheckBox chkAtivo;
+    private JTextField txtNome;
+    private JTextArea txtDescricao;
+    private JTextField txtPreco;
+    private JComboBox<String> cbModelo;
     private JButton btnSalvar;
 
     public CadastroReservaDialog(Frame parent) {
@@ -31,7 +35,7 @@ public class CadastroReservaDialog extends JDialog {
 
     private void initComponents() {
         setTitle("Cadastrar Reserva");
-        setSize(450, 430);
+        setSize(450, 600);
         setResizable(false);
         setLayout(null);
 
@@ -76,12 +80,39 @@ public class CadastroReservaDialog extends JDialog {
         add(cbServico);
         carregarServicos();
 
+        JLabel lblNome = new JLabel("Nome:");
+        lblNome.setBounds(30, 230, 120, 25);
+        add(lblNome);
+
+        txtNome = new JTextField();
+        txtNome.setBounds(150, 230, 230, 25);
+        add(txtNome);
+
+        JLabel lblDescricao = new JLabel("Descrição:");
+        lblDescricao.setBounds(30, 270, 120, 25);
+        add(lblDescricao);
+
+        txtDescricao = new JTextArea();
+        txtDescricao.setLineWrap(true);
+        txtDescricao.setWrapStyleWord(true);
+        JScrollPane scrollDescricao = new JScrollPane(txtDescricao);
+        scrollDescricao.setBounds(150, 270, 230, 60);
+        add(scrollDescricao);
+
+        JLabel lblPreco = new JLabel("Preço:");
+        lblPreco.setBounds(30, 340, 120, 25);
+        add(lblPreco);
+
+        txtPreco = new JTextField();
+        txtPreco.setBounds(150, 340, 230, 25);
+        add(txtPreco);
+
         chkAtivo = new JCheckBox("Reserva Ativa", true);
-        chkAtivo.setBounds(150, 230, 150, 25);
+        chkAtivo.setBounds(150, 420, 150, 25);
         add(chkAtivo);
 
         btnSalvar = new JButton("Salvar");
-        btnSalvar.setBounds(150, 280, 120, 35);
+        btnSalvar.setBounds(150, 470, 120, 35);
         btnSalvar.addActionListener(e -> salvarReserva());
         add(btnSalvar);
     }
@@ -89,7 +120,8 @@ public class CadastroReservaDialog extends JDialog {
     private void salvarReserva() {
         try {
             
-            if (txtIdPet.getText().isBlank() || txtIdCliente.getText().isBlank()) {
+            if (txtIdPet.getText().isBlank() || txtIdCliente.getText().isBlank() || 
+                txtNome.getText().isBlank() || txtPreco.getText().isBlank()) {
                 JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatórios!");
                 return;
             }
@@ -113,10 +145,14 @@ public class CadastroReservaDialog extends JDialog {
 
             String servico = cbServico.getSelectedItem().toString();
             boolean ativo = chkAtivo.isSelected();
-
             
-            Reserva r = new Reserva(0, idPet, idCliente, dataInicio, dataFim, servico, ativo);
-
+            String nome = txtNome.getText();
+            String descricao = txtDescricao.getText();
+            double preco = Double.parseDouble(txtPreco.getText());
+            int modelo = 0;
+        
+            
+            Reserva r = new Reserva(0, idPet, idCliente, dataInicio, dataFim, servico, ativo, modelo, preco, nome, descricao);
             
             EntityManager em = DatabaseJPA.getInstance().getEntityManager();
             ReservaDAO dao = new ReservaDAO(em);
@@ -125,6 +161,8 @@ public class CadastroReservaDialog extends JDialog {
             JOptionPane.showMessageDialog(this, "Reserva cadastrada com sucesso!");
             dispose();
 
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Erro: Verifique se os campos numéricos estão corretos!");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar: " + ex.getMessage());
         }

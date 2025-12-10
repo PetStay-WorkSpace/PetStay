@@ -64,4 +64,16 @@ public class ReservaDAO implements IDao<Reserva> {
         TypedQuery<Reserva> query = entityManager.createQuery(jpql, Reserva.class);
         return query.getResultList();
     }
+
+    public List<Reserva> findByModelo(int modelo) {
+        try {
+            String jpql = "SELECT r FROM Reserva r WHERE r.modelo = :modelo ORDER BY r.id_reserva ASC";
+            TypedQuery<Reserva> query = entityManager.createQuery(jpql, Reserva.class);
+            query.setParameter("modelo", modelo);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.err.println("Erro ao buscar reservas por modelo: " + e.getMessage());
+            return List.of();
+        }
+    }
 }

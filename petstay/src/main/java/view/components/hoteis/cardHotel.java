@@ -160,7 +160,13 @@ public class cardHotel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(null);
 
-        button_buy.setText("nomeBotão");
+        button_buy.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        button_buy.setText("Reservar");
+        button_buy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_buyActionPerformed(evt);
+            }
+        });
 
         title.setFont(new java.awt.Font("Poppins SemiBold", 0, 18)); // NOI18N
         title.setText("Hotel Comum");
@@ -172,7 +178,7 @@ public class cardHotel extends javax.swing.JPanel {
         subtitle.setLineWrap(true);
         subtitle.setRows(5);
         subtitle.setText("dsadsadsa");
-        subtitle.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        subtitle.setBorder(null);
         subtitle.setCaretColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(subtitle);
 
@@ -203,6 +209,10 @@ public class cardHotel extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void button_buyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_buyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_button_buyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
