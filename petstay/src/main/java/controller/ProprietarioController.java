@@ -28,8 +28,12 @@ public class ProprietarioController {
             if (proprietarioDAO.findByCpf(cpf) != null) {
                 throw new IllegalArgumentException("Já existe um usuário com este CPF.");
             }
+            
+            Proprietario proprietario = new Proprietario(0, nome, email, telefone, senha, cpf, ativo);
+            
             String senhaHash = PasswordUtil.criptografar(senha);
-            Proprietario proprietario = new Proprietario(0, nome, email, telefone, senhaHash, cpf, ativo);
+            proprietario.setSenha(senhaHash);
+            
             proprietarioDAO.save(proprietario);
             System.out.println("Proprietário salvo com sucesso!");
             

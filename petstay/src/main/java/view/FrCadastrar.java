@@ -337,7 +337,7 @@ public class FrCadastrar extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIrParaLoginMouseClicked
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
-            // Fazer o Cadastro de Proprietario
+        // Fazer o Cadastro de Proprietario
         try {
             String nome = edtNome.getText().trim();
             String telefone = edtTelefone.getText().trim();
@@ -345,16 +345,13 @@ public class FrCadastrar extends javax.swing.JFrame {
             String cpf = edtCPF.getText().trim();
             String senha = edtSenha.getText().trim();
 
-            if (nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Por favor preencha Nome, Telefone, Email, CPF e Senha.", "Dados incompletos", JOptionPane.WARNING_MESSAGE);
+            if (nome.isEmpty() || telefone.isEmpty() || email.isEmpty() || cpf.isEmpty() || senha.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.", "Dados incompletos", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
             ProprietarioController controller = new ProprietarioController();
             controller.save(nome, email, telefone, senha, cpf, true);
-
-            Proprietario user = new Proprietario(0, nome, email, telefone, senha, cpf, true);
-            Session.getInstance().setUser(user);
 
             JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 
@@ -367,9 +364,8 @@ public class FrCadastrar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Dados inválidos", JOptionPane.WARNING_MESSAGE);
 
         } catch (Exception ex) {
-        
-        logger.log(java.util.logging.Level.SEVERE, "Erro ao cadastrar proprietario", ex);
-        JOptionPane.showMessageDialog(this, "Erro ao cadastrar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+            logger.log(java.util.logging.Level.SEVERE, "Erro ao cadastrar proprietario", ex);
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar: " + ex.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnEntrarMouseClicked
 
