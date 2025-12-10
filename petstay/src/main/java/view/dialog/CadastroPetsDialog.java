@@ -16,12 +16,29 @@ public class CadastroPetsDialog extends JDialog {
     private JButton btnSalvar;
 
     private PetsController controller;
+    private int idProprietarioPreDefinido = -1;
+    private boolean petCadastrado = false;
 
     public CadastroPetsDialog(Frame parent) {
         super(parent, true);
         controller = new PetsController();
         initComponents();
         setLocationRelativeTo(parent);
+    }
+    
+    public CadastroPetsDialog(Frame parent, int idProprietario, String nomeProprietario) {
+        super(parent, true);
+        controller = new PetsController();
+        this.idProprietarioPreDefinido = idProprietario;
+        initComponents();
+
+        txtDono.setText(idProprietario + " - " + nomeProprietario);
+        txtDono.setEditable(false);
+        setLocationRelativeTo(parent);
+    }
+    
+    public boolean isPetCadastrado() {
+        return petCadastrado;
     }
 
     private void initComponents() {
@@ -85,11 +102,17 @@ public class CadastroPetsDialog extends JDialog {
                 return;
             }
 
-            int dono = Integer.parseInt(donoStr);
+            int dono;
+            if (idProprietarioPreDefinido > 0) {
+                dono = idProprietarioPreDefinido;
+            } else {
+                dono = Integer.parseInt(donoStr.split(" - ")[0].trim());
+            }
 
             boolean ok = controller.save(dono, nome, raca, especie);
 
             if (ok) {
+                petCadastrado = true;
                 JOptionPane.showMessageDialog(this, "Pet cadastrado com sucesso!");
                 dispose();
             } else {

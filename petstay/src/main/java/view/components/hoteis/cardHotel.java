@@ -4,6 +4,7 @@
  */
 package view.components.hoteis;
 
+import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -11,7 +12,11 @@ import java.awt.Shape;
 import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.SwingUtilities;
 import model.Hotel;
+import model.Proprietario;
+import model.Session;
+import view.dialog.CadastroReservaDialog;
 /**
  *
  * @author lohra
@@ -211,7 +216,9 @@ public class cardHotel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void button_buyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_buyActionPerformed
-        // TODO add your handling code here:
+        Frame parentFrame = (Frame) SwingUtilities.getWindowAncestor(this);
+        CadastroReservaDialog dialog = new CadastroReservaDialog(parentFrame, data);        
+        dialog.setVisible(true);
     }//GEN-LAST:event_button_buyActionPerformed
 
 

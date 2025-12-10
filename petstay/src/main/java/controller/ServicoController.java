@@ -85,4 +85,14 @@ public class ServicoController {
     return nomes;
 }
 
+    public Servico findByNome(String nome) {
+        List<Servico> servicos = servicoDAO.findAll();
+        for (Servico s : servicos) {
+            if (s.getNome().equals(nome)) {
+                return s;
+            }
+        }
+        return null;
+    }
+
 }
