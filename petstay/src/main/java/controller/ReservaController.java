@@ -45,6 +45,10 @@ public class ReservaController {
         return reservaDAO.findByModelo(modelo);
     }
     
+    public List<Reserva> findByIdPet(int idPet) {
+        return reservaDAO.findByIdPet(idPet);
+    }
+    
     public void carregarTabela(DefaultTableModel model) {
         model.setRowCount(0); 
 

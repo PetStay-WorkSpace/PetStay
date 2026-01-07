@@ -42,11 +42,13 @@ public class FrHome extends javax.swing.JFrame {
      */
     public FrHome() {
         initComponents();
+        estilizarTabelas();
         carregarTabela();
         carregarTabelaPets();
         carregarTabelaReservas();
         carregarTabelaServicos();
         carregarRelatorio();
+        configurarListenerTabelaPets();
         setBackground(new Color(0,0,0,0));
         winButton1.initEvent(this);
         try {
@@ -166,6 +168,132 @@ public class FrHome extends javax.swing.JFrame {
             
         } catch (Exception ex) {
             logger.log(java.util.logging.Level.SEVERE, "Erro ao carregar relatório: " + ex.getMessage(), ex);
+        }
+    }
+    
+    private void estilizarTabelas() {
+        // Cores personalizadas
+        Color headerColor = new Color(0, 130, 243);
+        Color headerTextColor = Color.WHITE;
+        Color rowColor1 = Color.WHITE;
+        Color rowColor2 = new Color(247, 247, 248);
+        Color selectionColor = new Color(173, 216, 230);
+        Color gridColor = new Color(220, 220, 220);
+        
+        javax.swing.JTable[] tabelas = {
+            jTableProprietarios, 
+            jTablePets, 
+            jTableReservas, 
+            jTableServicos
+        };
+        
+        for (javax.swing.JTable tabela : tabelas) {
+            // Configurar cabeçalho
+            tabela.getTableHeader().setFont(new java.awt.Font("Poppins SemiBold", java.awt.Font.PLAIN, 13));
+            tabela.getTableHeader().setBackground(headerColor);
+            tabela.getTableHeader().setForeground(headerTextColor);
+            tabela.getTableHeader().setOpaque(false);
+            tabela.getTableHeader().setPreferredSize(new java.awt.Dimension(tabela.getTableHeader().getWidth(), 35));
+            
+            // Configurar corpo da tabela
+            tabela.setFont(new java.awt.Font("Poppins", java.awt.Font.PLAIN, 12));
+            tabela.setRowHeight(30);
+            tabela.setShowGrid(true);
+            tabela.setGridColor(gridColor);
+            tabela.setSelectionBackground(selectionColor);
+            tabela.setSelectionForeground(Color.BLACK);
+            tabela.setIntercellSpacing(new java.awt.Dimension(10, 5));
+            
+            // Renderizador customizado para linhas alternadas
+            tabela.setDefaultRenderer(Object.class, new javax.swing.table.DefaultTableCellRenderer() {
+                @Override
+                public java.awt.Component getTableCellRendererComponent(
+                    javax.swing.JTable table, Object value, boolean isSelected, 
+                    boolean hasFocus, int row, int column) {
+                    
+                    java.awt.Component c = super.getTableCellRendererComponent(
+                        table, value, isSelected, hasFocus, row, column);
+                    
+                    if (!isSelected) {
+                        c.setBackground(row % 2 == 0 ? rowColor1 : rowColor2);
+                    }
+                    
+                    // Padding nas células
+                    if (c instanceof javax.swing.JLabel) {
+                        ((javax.swing.JLabel) c).setBorder(
+                            javax.swing.BorderFactory.createEmptyBorder(5, 10, 5, 10)
+                        );
+                    }
+                    
+                    return c;
+                }
+            });
+            
+            // Centralizar texto do cabeçalho
+            ((javax.swing.table.DefaultTableCellRenderer) tabela.getTableHeader().getDefaultRenderer())
+                .setHorizontalAlignment(javax.swing.JLabel.CENTER);
+        }
+    }
+    
+    private void configurarListenerTabelaPets() {
+        jTablePets.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (evt.getClickCount() == 1) {
+                    int row = jTablePets.getSelectedRow();
+                    if (row != -1) {
+                        int idPet = (int) jTablePets.getValueAt(row, 0);
+                        mostrarReservasDoPet(idPet);
+                    }
+                }
+            }
+        });
+    }
+    
+    private void mostrarReservasDoPet(int idPet) {
+        try {
+            List<Reserva> reservas = reservasController.findByIdPet(idPet);
+            
+            if (reservas.isEmpty()) {
+                JOptionPane.showMessageDialog(this, 
+                    "Este pet não possui reservas cadastradas.", 
+                    "Reservas do Pet", 
+                    JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            
+            StringBuilder mensagem = new StringBuilder();
+            mensagem.append("Reservas do Pet ID ").append(idPet).append(":\n\n");
+            
+            for (Reserva r : reservas) {
+                mensagem.append("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n");
+                mensagem.append("ID Reserva: ").append(r.getId_reserva()).append("\n");
+                mensagem.append("Cliente ID: ").append(r.getId_cliente()).append("\n");
+                mensagem.append("Data Início: ").append(r.getData_inicio()).append("\n");
+                mensagem.append("Data Fim: ").append(r.getData_fim()).append("\n");
+                mensagem.append("Serviço: ").append(r.getServico()).append("\n");
+                mensagem.append("Preço: R$ ").append(String.format("%.2f", r.getPreco())).append("\n");
+                mensagem.append("Ativo: ").append(r.isAtivo() ? "Sim" : "Não").append("\n");
+                mensagem.append("\n");
+            }
+            
+            javax.swing.JTextArea textArea = new javax.swing.JTextArea(mensagem.toString());
+            textArea.setEditable(false);
+            textArea.setFont(new java.awt.Font("Monospaced", java.awt.Font.PLAIN, 12));
+            javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane(textArea);
+            scrollPane.setPreferredSize(new java.awt.Dimension(500, 400));
+            
+            JOptionPane.showMessageDialog(this, 
+                scrollPane, 
+                "Histórico de Reservas - Pet ID " + idPet, 
+                JOptionPane.INFORMATION_MESSAGE);
+                
+        } catch (Exception ex) {
+            logger.log(java.util.logging.Level.SEVERE, "Erro ao buscar reservas do pet: " + ex.getMessage(), ex);
+            JOptionPane.showMessageDialog(this, 
+                "Erro ao carregar reservas do pet.", 
+                "Erro", 
+                JOptionPane.ERROR_MESSAGE);
         }
     }
 
