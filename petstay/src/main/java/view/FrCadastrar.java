@@ -349,9 +349,9 @@ public class FrCadastrar extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Por favor, preencha todos os campos.", "Dados incompletos", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-
+            Proprietario proprietario = new Proprietario(0,nome,email,telefone,senha,cpf,true);
             ProprietarioController controller = new ProprietarioController();
-            controller.save(nome, email, telefone, senha, cpf, true);
+            controller.save(proprietario);
 
             JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 

@@ -207,9 +207,6 @@ public class FrHome extends javax.swing.JFrame {
         btn_servicos = new view.components.PanelRound();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        btn_pedidos = new view.components.PanelRound();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         btn_relatorios = new view.components.PanelRound();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -390,7 +387,7 @@ public class FrHome extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(area_rodapeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(userName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(6, 6, 6))
         );
 
@@ -589,45 +586,6 @@ public class FrHome extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btn_pedidos.setBackground(new java.awt.Color(247, 247, 248));
-        btn_pedidos.setMaximumSize(new java.awt.Dimension(135, 41));
-        btn_pedidos.setRoundBottomLeft(25);
-        btn_pedidos.setRoundBottomRight(25);
-        btn_pedidos.setRoundTopLeft(25);
-        btn_pedidos.setRoundTopRight(25);
-        btn_pedidos.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_pedidosMouseClicked(evt);
-            }
-        });
-
-        jLabel14.setFont(new java.awt.Font("Poppins SemiBold", 0, 13)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(54, 54, 54));
-        jLabel14.setText("Pedidos");
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon-carrinho.png"))); // NOI18N
-
-        javax.swing.GroupLayout btn_pedidosLayout = new javax.swing.GroupLayout(btn_pedidos);
-        btn_pedidos.setLayout(btn_pedidosLayout);
-        btn_pedidosLayout.setHorizontalGroup(
-            btn_pedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_pedidosLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(jLabel15)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        btn_pedidosLayout.setVerticalGroup(
-            btn_pedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btn_pedidosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(btn_pedidosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
         btn_relatorios.setBackground(new java.awt.Color(247, 247, 248));
         btn_relatorios.setMaximumSize(new java.awt.Dimension(135, 41));
         btn_relatorios.setRoundBottomLeft(25);
@@ -681,7 +639,6 @@ public class FrHome extends javax.swing.JFrame {
                     .addComponent(btn_pets, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_reservas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_servicos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_pedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_relatorios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -698,8 +655,6 @@ public class FrHome extends javax.swing.JFrame {
                 .addComponent(btn_reservas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_servicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_pedidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_relatorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -805,8 +760,11 @@ public class FrHome extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 539, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 798, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
@@ -1310,7 +1268,7 @@ public class FrHome extends javax.swing.JFrame {
         panelRound2.setLayout(panelRound2Layout);
         panelRound2Layout.setHorizontalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(tabbledPanel)
                 .addContainerGap())
@@ -1374,10 +1332,6 @@ public class FrHome extends javax.swing.JFrame {
         tabbledPanel.setSelectedIndex(6);
     }//GEN-LAST:event_btn_relatoriosMouseClicked
 
-    private void btn_pedidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_pedidosMouseClicked
-       tabbledPanel.setSelectedIndex(5);
-    }//GEN-LAST:event_btn_pedidosMouseClicked
-
     private void btn_servicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_servicosMouseClicked
        tabbledPanel.setSelectedIndex(4);
     }//GEN-LAST:event_btn_servicosMouseClicked
@@ -1423,7 +1377,6 @@ public class FrHome extends javax.swing.JFrame {
     private view.components.PanelRound body;
     private javax.swing.JLabel btnLogout;
     private view.components.PanelRound btn_home;
-    private view.components.PanelRound btn_pedidos;
     private view.components.PanelRound btn_pets;
     private view.components.PanelRound btn_proprietarios;
     private view.components.PanelRound btn_relatorios;
@@ -1440,8 +1393,6 @@ public class FrHome extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
