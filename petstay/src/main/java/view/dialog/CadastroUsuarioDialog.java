@@ -1,10 +1,8 @@
 
 package view.dialog;
 
-import factory.DatabaseJPA;
-import model.dao.ProprietarioDAO;
+import controller.ProprietarioController;
 import java.awt.Frame;
-import javax.persistence.EntityManager;
 import javax.swing.*;
 import model.Proprietario;
 
@@ -75,29 +73,57 @@ public class CadastroUsuarioDialog extends JDialog {
         add(btnSalvar);
     }
     
-    public void salvarUsuario(){
+    public void salvarUsuario() {
         try {
-            String nome = txtNome.getText();
-            String email = txtEmail.getText();
-            String telefone = txtTelefone.getText();
-            String cpf = txtCpf.getText();
-            String senha = new String(txtSenha.getPassword());
-            
-            if (nome.isBlank() || email.isBlank() || senha.isBlank()) {
-                JOptionPane.showMessageDialog(this, "Preencha todos os campos obrigatorios");
+            String nome = txtNome.getText().trim();
+            String email = txtEmail.getText().trim();
+            String telefone = txtTelefone.getText().trim();
+            String cpf = txtCpf.getText().trim();
+            String senha = new String(txtSenha.getPassword()).trim();
+
+            if (nome.isBlank() || email.isBlank() || senha.isBlank()
+                    || telefone.isBlank() || cpf.isBlank()) {
+
+                JOptionPane.showMessageDialog(
+                    this,
+                    "Preencha todos os campos.",
+                    "Dados incompletos",
+                    JOptionPane.WARNING_MESSAGE
+                );
                 return;
             }
-            
-            Proprietario p = new Proprietario(0, nome, email, telefone, senha, cpf, true);
-            
-            EntityManager em = DatabaseJPA.getInstance().getEntityManager();
-            ProprietarioDAO dao = new ProprietarioDAO(em);
-            dao.save(p);
-            
-            JOptionPane.showMessageDialog(this, "Usuário cadastrado com sucesso!");
+
+            Proprietario proprietario =
+                    new Proprietario(0, nome, email, telefone, senha, cpf, true);
+
+            ProprietarioController controller = new ProprietarioController();
+            controller.save(proprietario);
+
+            JOptionPane.showMessageDialog(
+                this,
+                "Usuário cadastrado com sucesso!",
+                "Sucesso",
+                JOptionPane.INFORMATION_MESSAGE
+            );
+
             dispose();
+
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(
+                this,
+                ex.getMessage(),
+                "Cadastro inválido",
+                JOptionPane.WARNING_MESSAGE
+            );
+
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar: " + ex.getMessage());
-    }
+            JOptionPane.showMessageDialog(
+                this,
+                "Erro interno ao salvar cadastro.",
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+            );
+            ex.printStackTrace();
+        }
     }
 }

@@ -4,15 +4,14 @@ import model.Proprietario;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
-import security.PasswordUtil;
+
 
 /**
  * @author lohra
  */
 public class ProprietarioDAO implements IDao<Proprietario> {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public ProprietarioDAO(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -25,7 +24,10 @@ public class ProprietarioDAO implements IDao<Proprietario> {
             entityManager.persist(p);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
         } 
     }
 
@@ -33,15 +35,16 @@ public class ProprietarioDAO implements IDao<Proprietario> {
     public void delete(Proprietario p) {
         try {
             entityManager.getTransaction().begin();
-            Proprietario ref = entityManager.find(Proprietario.class, p);
-            if(ref != null) {
-                entityManager.remove(ref);
-            } else {
-                System.out.println(" Proprietario nao encontrado");
-            } 
+            Proprietario managed = entityManager.find(Proprietario.class, p.getId());
+            if(managed != null) {
+                entityManager.remove(managed);
+            }
+           
             entityManager.getTransaction().commit();
         } catch(Exception e){
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             throw e;
         }
     }
@@ -54,29 +57,9 @@ public class ProprietarioDAO implements IDao<Proprietario> {
     @Override
     public List<Proprietario> findAll() {
         String jpql = "SELECT p FROM Proprietario p ORDER BY p.id ASC";
-        TypedQuery<Proprietario> query = entityManager.createQuery(jpql, Proprietario.class);
-        return query.getResultList();
+        return entityManager.createQuery(jpql, Proprietario.class).getResultList();
     }
 
-    public Proprietario validateLogin(String email, String senhaPlain) {
-        try {
-            String jpql = "SELECT p FROM Proprietario p WHERE p.email = :email";
-            TypedQuery<Proprietario> query = entityManager.createQuery(jpql, Proprietario.class);
-            query.setParameter("email", email);
-
-            List<Proprietario> resultados = query.getResultList();
-            if (!resultados.isEmpty()) {
-                Proprietario p = resultados.get(0);
-                if (PasswordUtil.verificarSenha(senhaPlain, p.getSenha())) {
-                    return p;
-                }
-            }
-            return null;
-        } catch (Exception e) {
-            throw new RuntimeException("Erro ao validar login: " + e.getMessage(), e);
-        }
-    }
-    
     public Proprietario findByEmail(String email) {
         try {
             return entityManager.createQuery(
@@ -101,24 +84,3 @@ public class ProprietarioDAO implements IDao<Proprietario> {
 
 }
 
-
-/*
-public Proprietario validateLogin(String email, String senha) {
-    Proprietario resultado = null; 
-    sql = "SELECT * FROM proprietario WHERE email = ? AND senha = ?"; 
-    try {
-        connection = Persistencia.getConnection();
-        statement = connection.prepareStatement(sql); 
-        statement.setString(1, email); 
-        statement.setString(2, senha); 
-        ResultSet rs = statement.executeQuery(); 
-        if (rs.next()) { 
-            resultado = new Proprietario( rs.getInt("id"), rs.getString("nome"), rs.getString("email"), rs.getString("telefone"), rs.getString("senha"), rs.getString("cpf"), rs.getBoolean("ativo") ); 
-        } statement.close(); 
-    } catch (SQLException e) { 
-        throw new RuntimeException("Erro ao buscar Proprietário por email/senha: " + e.getMessage(), e); 
-    } finally { 
-        Persistencia.closeConnection(); } 
-    return resultado; } 
-}
-*/

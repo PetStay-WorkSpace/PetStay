@@ -12,61 +12,43 @@ import javax.swing.table.DefaultTableModel;
 public class ProprietarioController {
 
     private final ProprietarioDAO proprietarioDAO;
-    private final EntityManager entityManager;
 
     public ProprietarioController() {
-        this.entityManager = DatabaseJPA.getInstance().getEntityManager();
-        this.proprietarioDAO = new ProprietarioDAO(entityManager);
+        EntityManager em = DatabaseJPA.getInstance().getEntityManager();
+        this.proprietarioDAO = new ProprietarioDAO(em);
     }
 
-    public void save(String nome, String email, String telefone, String senha, String cpf, boolean ativo) throws Exception {
-        try {
-            if (proprietarioDAO.findByEmail(email) != null) {
-                throw new IllegalArgumentException("Já existe um usuário com este e-mail.");
-            }
-
-            if (proprietarioDAO.findByCpf(cpf) != null) {
-                throw new IllegalArgumentException("Já existe um usuário com este CPF.");
-            }
-            
-            Proprietario proprietario = new Proprietario(0, nome, email, telefone, senha, cpf, ativo);
-            
-            String senhaHash = PasswordUtil.criptografar(senha);
-            proprietario.setSenha(senhaHash);
-            
-            proprietarioDAO.save(proprietario);
-            System.out.println("Proprietário salvo com sucesso!");
-            
-        } catch (IllegalArgumentException e) {
-            throw e;
-            
-        } catch (Exception e) {
-            throw new Exception("Erro ao salvar proprietário no banco: " + e.getMessage());
+    public void save(Proprietario proprietario) {
+   
+        if (proprietarioDAO.findByEmail(proprietario.getEmail()) != null) {
+            throw new IllegalArgumentException("E-mail já cadastrado.");
         }
+           
+        if (proprietarioDAO.findByCpf(proprietario.getCpf()) != null) {
+            throw new IllegalArgumentException("CPF já cadastrado.");
+        }
+            
+
+        proprietario.setEmail(proprietario.getEmail().toLowerCase().trim());
+        proprietario.setCpf(proprietario.getCpf().replaceAll("\\D", ""));
+
+        String senhaHash = PasswordUtil.criptografar(proprietario.getSenha());
+        proprietario.setSenha(senhaHash);
+
+        proprietarioDAO.save(proprietario);
+        
     }
 
     public List<Proprietario> findAll() {
-        try {
-            return proprietarioDAO.findAll();
-        } catch (Exception e) {
-            System.err.println("Erro ao listar proprietários: " + e.getMessage());
-            return List.of();
-        }
+        return proprietarioDAO.findAll();
     }
 
     public Proprietario login(String email, String senha) {
-        try {
-            Proprietario proprietario = proprietarioDAO.validateLogin(email, senha);
-            if (proprietario != null) {
-                System.out.println("Login realizado com sucesso!");
-            } else {
-                System.out.println(" Email ou senha incorretos.");
-            }
-            return proprietario;
-        } catch (Exception e) {
-            System.err.println("Erro ao validar login: " + e.getMessage());
-            return null;
+        Proprietario p = proprietarioDAO.findByEmail(email);
+        if (p != null && PasswordUtil.verificarSenha(senha, p.getSenha())) {            
+            return p;
         }
+        return null;
     }
     
     public void carregarTabela(DefaultTableModel model) {
@@ -88,13 +70,7 @@ public class ProprietarioController {
     } catch (Exception e) {
         e.printStackTrace();
         System.err.println("Erro ao carregar tabela: " + e.getMessage());
-    }
-}
-
-    public void close() {
-        if (entityManager != null && entityManager.isOpen()) {
-            entityManager.close();
-            System.out.println("EntityManager fechado com sucesso.");
         }
     }
+
 }
