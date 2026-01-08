@@ -15,6 +15,7 @@ import com.github.lgooddatepicker.components.DateTimePicker;
 import controller.ServicoController;
 import controller.PetsController;
 import controller.ProprietarioController;
+import controller.ReservaController;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -290,15 +291,17 @@ public class CadastroReservaDialog extends JDialog {
             String nome = txtNome.getText();
             String descricao = txtDescricao.getText();
             double preco = Double.parseDouble(txtPreco.getText().isEmpty() ? "0" : txtPreco.getText());
+      
             int modelo = 0;
         
             
             Reserva r = new Reserva(0, idPet, idCliente, dataInicio, dataFim, servicos, ativo, modelo, preco, nome, descricao);
             
-            EntityManager em = DatabaseJPA.getInstance().getEntityManager();
-            ReservaDAO dao = new ReservaDAO(em);
-            dao.save(r);
-
+            
+            ReservaController controller = new ReservaController();
+            
+            controller.save(r);
+   
             String msgServicos = nomesServicos.isEmpty() ? "Nenhum serviço adicional" : servicos;
             JOptionPane.showMessageDialog(this, "Reserva cadastrada com sucesso!\nServiços: " + msgServicos + "\nPreço Total: R$ " + String.format("%.2f", preco));
             dispose();

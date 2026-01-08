@@ -10,10 +10,9 @@ import javax.swing.table.DefaultTableModel;
 public class ReservaController {
 
     private final ReservaDAO reservaDAO;
-    private final EntityManager entityManager;
-
+    
     public ReservaController() {
-        this.entityManager = DatabaseJPA.getInstance().getEntityManager();
+        EntityManager entityManager = DatabaseJPA.getInstance().getEntityManager();
         this.reservaDAO = new ReservaDAO(entityManager);
     }
 
@@ -57,6 +56,7 @@ public class ReservaController {
                 r.getData_inicio(),
                 r.getData_fim(),
                 r.getServico(),
+                r.getPreco(),
                 r.isAtivo()
             });
         }

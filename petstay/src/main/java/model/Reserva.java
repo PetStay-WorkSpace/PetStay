@@ -32,7 +32,7 @@ public class Reserva {
         this.servico = servico;
         this.ativo = ativo;
         this.modelo = modelo;
-        this.preco = 0.0;
+        this.preco = preco;
         this.nome = nome;
         this.descricao = descricao;
     }
