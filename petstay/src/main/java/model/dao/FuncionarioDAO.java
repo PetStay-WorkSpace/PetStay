@@ -3,7 +3,6 @@ package model.dao;
 import model.Funcionario;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
 public class FuncionarioDAO implements IDao<Funcionario> {
 
@@ -21,7 +20,9 @@ public class FuncionarioDAO implements IDao<Funcionario> {
             entityManager.getTransaction().commit();
         
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             throw e;
         } 
     }
@@ -30,14 +31,16 @@ public class FuncionarioDAO implements IDao<Funcionario> {
     public void delete(Funcionario f) {
         try {
             entityManager.getTransaction().begin();
-            Funcionario ref = entityManager.find(Funcionario.class, f.getId());
-            if(ref != null){
-                entityManager.remove(f);
-            } else {
-                System.out.println(" Funcionario nao encontrado");
-            }
+            Funcionario managed = entityManager.find(Funcionario.class, f.getId());
+            if(managed != null){
+                entityManager.remove(managed);
+            } 
+            
+            entityManager.getTransaction().commit();
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             throw e;
         } 
     }
@@ -49,8 +52,7 @@ public class FuncionarioDAO implements IDao<Funcionario> {
 
     @Override
     public List<Funcionario> findAll() {
-        String jpql = "SELECT * FROM Avaliacao a ORDER BY a.nome DESC";
-        TypedQuery<Funcionario> query = entityManager.createQuery(jpql, Funcionario.class);
-        return query.getResultList();
+        String jpql = "SELECT f FROM Funcionario f ORDER BY f.nome DESC";
+        return entityManager.createQuery(jpql, Funcionario.class).getResultList();
     }
 }

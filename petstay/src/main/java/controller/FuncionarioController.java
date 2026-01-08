@@ -6,64 +6,60 @@ import model.dao.FuncionarioDAO;
 
 import javax.persistence.EntityManager;
 import java.util.List;
+import security.PasswordUtil;
 
 public class FuncionarioController {
 
     private final FuncionarioDAO funcionarioDAO;
-    private final EntityManager entityManager;
 
     public FuncionarioController() {
-        this.entityManager = DatabaseJPA.getInstance().getEntityManager();
-        this.funcionarioDAO = new FuncionarioDAO(entityManager);
+        EntityManager em = DatabaseJPA.getInstance().getEntityManager();
+        this.funcionarioDAO = new FuncionarioDAO(em);
     }
 
-    public boolean save(String nome, String email, String telefone, String senha, String cpf, boolean ativo, boolean permissao) {
-        try {
-            Funcionario funcionario = new Funcionario(0, nome, email, telefone, senha, cpf, ativo, permissao);
-            funcionarioDAO.save(funcionario);
-            System.out.println("👨‍? Funcionário salvo com sucesso!");
-            return true;
-        } catch (Exception e) {
-            System.err.println("Erro ao salvar funcionário: " + e.getMessage());
-            return false;
+    public void save(Funcionario funcionario) {
+        if (funcionario == null) {
+            throw new IllegalArgumentException("Funcionário inválido.");
         }
+
+        if (funcionario.getNome() == null || funcionario.getNome().isBlank()) {
+            throw new IllegalArgumentException("Nome é obrigatório.");
+        }
+
+        if (funcionario.getEmail() == null || funcionario.getEmail().isBlank()) {
+            throw new IllegalArgumentException("Email é obrigatório.");
+        }
+
+        if (funcionario.getCpf() == null || funcionario.getCpf().isBlank()) {
+            throw new IllegalArgumentException("CPF é obrigatório.");
+        }
+        
+        funcionario.setEmail(funcionario.getEmail().toLowerCase().trim());
+        funcionario.setCpf(funcionario.getCpf().replaceAll("\\D", ""));
+        
+        String senhaHash = PasswordUtil.criptografar(funcionario.getSenha());
+        funcionario.setSenha(senhaHash);
+
+        funcionarioDAO.save(funcionario);
     }
 
-    public boolean delete(int id) {
-        try {
-            Funcionario funcionario = new Funcionario();
-            funcionario.setId(id);
-            funcionarioDAO.delete(funcionario);
-            System.out.println("Funcionário removido com sucesso!");
-            return true;
-        } catch (Exception e) {
-            System.err.println("Erro ao deletar funcionário: " + e.getMessage());
-            return false;
+    public void delete(int idFuncionario) {
+        
+        Funcionario funcionario = funcionarioDAO.find(idFuncionario);
+        
+        if (funcionario == null){
+            throw new IllegalArgumentException("Funcionário não encontrado");
         }
+        
+        funcionarioDAO.delete(funcionario);
     }
 
-    public Funcionario find(int id) {
-        try {
-            return funcionarioDAO.find(id);
-        } catch (Exception e) {
-            System.err.println("Erro ao buscar funcionário: " + e.getMessage());
-            return null;
-        }
+    public Funcionario find(int idFuncionario) {
+        return funcionarioDAO.find(idFuncionario);
     }
 
     public List<Funcionario> findAll() {
-        try {
-            return funcionarioDAO.findAll();
-        } catch (Exception e) {
-            System.err.println("Erro ao listar funcionários: " + e.getMessage());
-            return List.of();
-        }
+        return funcionarioDAO.findAll();
     }
 
-    public void close() {
-        if (entityManager != null && entityManager.isOpen()) {
-            entityManager.close();
-            System.out.println("EntityManager fechado com sucesso.");
-        }
-    }
 }

@@ -2,7 +2,6 @@ package model.dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 import model.Pets;
 
 public class PetsDAO implements IDao<Pets> {
@@ -20,7 +19,9 @@ public class PetsDAO implements IDao<Pets> {
             entityManager.persist(p);
             entityManager.getTransaction().commit();
         } catch (Exception ex) {
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             throw ex;
         }
     }
@@ -29,16 +30,16 @@ public class PetsDAO implements IDao<Pets> {
     public void delete(Pets p) {
         try {
             entityManager.getTransaction().begin();
-            Pets ref = entityManager.find(Pets.class, p.getId());
-            if (ref != null) {
-                entityManager.remove(ref);
-            } else {
-                System.out.println("Pet não encontrado");
-            }
+            Pets managed = entityManager.find(Pets.class, p.getId());
+            if (managed != null) {
+                entityManager.remove(managed);
+            } 
             entityManager.getTransaction().commit();
 
         } catch (Exception ex) {
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             throw ex;
         }
     }
@@ -51,7 +52,6 @@ public class PetsDAO implements IDao<Pets> {
     @Override
     public List<Pets> findAll() {
         String jpql = "SELECT p FROM Pets p ORDER BY p.id DESC";
-        TypedQuery<Pets> query = entityManager.createQuery(jpql, Pets.class);
-        return query.getResultList();
+        return entityManager.createQuery(jpql, Pets.class).getResultList();
     }
 }

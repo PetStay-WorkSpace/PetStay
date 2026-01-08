@@ -2,7 +2,6 @@ package model.dao;
 
 import model.Servico;
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 
@@ -21,7 +20,11 @@ public class ServicoDAO implements IDao<Servico>{
             entityManager.persist(s);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
+           if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
+
         } 
     }
     
@@ -39,16 +42,17 @@ public class ServicoDAO implements IDao<Servico>{
     public void delete(Servico s) {
         try {
             entityManager.getTransaction().begin();
-            Servico ref = entityManager.find(Servico.class, s.getId_servico());
-            if(ref != null) {
-                entityManager.remove(ref);
-            } else {
-                System.out.println("Serviço não encontrado para exclusão");
-            }
+            Servico managed = entityManager.find(Servico.class, s.getId_servico());
+            if(managed != null) {
+                entityManager.remove(managed);
+            } 
             entityManager.getTransaction().commit();
                 
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
         }
   
     }
@@ -61,7 +65,6 @@ public class ServicoDAO implements IDao<Servico>{
     @Override
     public List<Servico> findAll() {
         String jpql = "SELECT s FROM Servico s ORDER BY s.id_servico DESC";
-        TypedQuery<Servico> query = entityManager.createQuery(jpql, Servico.class);
-        return query.getResultList();
+        return entityManager.createQuery(jpql, Servico.class).getResultList();
     }
 }

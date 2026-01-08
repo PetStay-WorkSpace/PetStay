@@ -23,7 +23,9 @@ public class EnderecoDAO implements IDao<Endereco> {
             entityManager.persist(e);
             entityManager.getTransaction().commit();
         } catch (Exception ex) {
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             throw ex;
         }
  
@@ -36,13 +38,13 @@ public class EnderecoDAO implements IDao<Endereco> {
             Endereco ref = entityManager.find(Endereco.class, e.getId_endereco());
             if(ref != null){
                 entityManager.remove(ref);
-            } else {
-                System.out.println("Endereco nao encontrado");
             }
             entityManager.getTransaction().commit();
                
         } catch (Exception ex) {
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             throw ex;
         } 
     }
@@ -55,8 +57,7 @@ public class EnderecoDAO implements IDao<Endereco> {
 
     @Override
     public List<Endereco> findAll() {
-        String jpql = "SELECT a FROM Endereco a ORDER BY a.id_endereco DESC";
-        TypedQuery<Endereco> query = entityManager.createQuery(jpql, Endereco.class);
-        return query.getResultList();
+        String jpql = "SELECT e FROM Endereco e ORDER BY e.id_endereco DESC";
+        return entityManager.createQuery(jpql, Endereco.class).getResultList();
     }
 }

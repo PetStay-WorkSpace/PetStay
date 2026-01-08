@@ -5,6 +5,7 @@ import controller.ProprietarioController;
 import javax.swing.*;
 import java.awt.Frame;
 import java.util.List;
+import model.Pets;
 import model.Proprietario;
 
 public class CadastroPetsDialog extends JDialog {
@@ -108,19 +109,20 @@ public class CadastroPetsDialog extends JDialog {
             } else {
                 dono = Integer.parseInt(donoStr.split(" - ")[0].trim());
             }
+            
+            Pets pet = new Pets(0, dono, nome, raca, especie);
+            
+            controller.save(pet);
 
-            boolean ok = controller.save(dono, nome, raca, especie);
-
-            if (ok) {
-                petCadastrado = true;
-                JOptionPane.showMessageDialog(this, "Pet cadastrado com sucesso!");
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Erro ao salvar o pet.");
-            }
+            petCadastrado = true;
+        JOptionPane.showMessageDialog(this, "Pet cadastrado com sucesso!");
+        dispose();
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "ID do dono deve ser um número.");
+        } catch (IllegalArgumentException e) {
+        
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Dados inválidos", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar: " + ex.getMessage());
         }

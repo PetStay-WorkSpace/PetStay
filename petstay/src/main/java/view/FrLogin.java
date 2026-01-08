@@ -41,8 +41,8 @@ public class FrLogin extends javax.swing.JFrame {
         winButton1 = new view.components.win_button.WinButton();
         body = new view.components.PanelRound();
         panelRound4 = new view.components.PanelRound();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        labelIcon = new javax.swing.JLabel();
+        labelImagem = new javax.swing.JLabel();
         panelRound1 = new view.components.PanelRound();
         texts_info = new javax.swing.JPanel();
         alignCenter = new javax.swing.JPanel();
@@ -50,14 +50,14 @@ public class FrLogin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         areaEmail = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        labelEmail = new javax.swing.JLabel();
+        edtEmail = new javax.swing.JTextField();
         areaSenha = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        labelSenha = new javax.swing.JLabel();
+        PasswordEdt = new javax.swing.JPasswordField();
         btnEntrar = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
-        jButton1 = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PetStay");
@@ -107,9 +107,9 @@ public class FrLogin extends javax.swing.JFrame {
         panelRound4.setBackground(new java.awt.Color(255, 255, 255));
         panelRound4.setRoundBottomLeft(30);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo.png"))); // NOI18N
+        labelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo.png"))); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bg_login.png"))); // NOI18N
+        labelImagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bg_login.png"))); // NOI18N
 
         javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
         panelRound4.setLayout(panelRound4Layout);
@@ -118,9 +118,9 @@ public class FrLogin extends javax.swing.JFrame {
             .addGroup(panelRound4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                    .addComponent(labelImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
                     .addGroup(panelRound4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                        .addComponent(labelIcon)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -128,9 +128,9 @@ public class FrLogin extends javax.swing.JFrame {
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addComponent(labelIcon)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                .addComponent(labelImagem, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -161,52 +161,52 @@ public class FrLogin extends javax.swing.JFrame {
         areaEmail.setMaximumSize(new java.awt.Dimension(358, 139));
         areaEmail.setLayout(new java.awt.GridLayout(2, 1));
 
-        jLabel3.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel3.setText("Email:");
-        jLabel3.setMaximumSize(new java.awt.Dimension(280, 22));
-        jLabel3.setPreferredSize(new java.awt.Dimension(280, 16));
-        areaEmail.add(jLabel3);
+        labelEmail.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        labelEmail.setText("Email:");
+        labelEmail.setMaximumSize(new java.awt.Dimension(280, 22));
+        labelEmail.setPreferredSize(new java.awt.Dimension(280, 16));
+        areaEmail.add(labelEmail);
 
-        jTextField1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        jTextField1.setText("h@g.com");
-        jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField1.setMaximumSize(new java.awt.Dimension(330, 40));
-        jTextField1.setPreferredSize(new java.awt.Dimension(330, 40));
-        jTextField1.setSelectedTextColor(new java.awt.Color(204, 204, 204));
-        jTextField1.setSelectionColor(new java.awt.Color(0, 130, 243));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        edtEmail.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        edtEmail.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        edtEmail.setText("h@g.com");
+        edtEmail.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        edtEmail.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        edtEmail.setMaximumSize(new java.awt.Dimension(330, 40));
+        edtEmail.setPreferredSize(new java.awt.Dimension(330, 40));
+        edtEmail.setSelectedTextColor(new java.awt.Color(204, 204, 204));
+        edtEmail.setSelectionColor(new java.awt.Color(0, 130, 243));
+        edtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                edtEmailActionPerformed(evt);
             }
         });
-        areaEmail.add(jTextField1);
+        areaEmail.add(edtEmail);
 
         areaSenha.setBackground(new java.awt.Color(247, 247, 248));
         areaSenha.setMaximumSize(new java.awt.Dimension(358, 139));
         areaSenha.setLayout(new java.awt.GridLayout(2, 1));
 
-        jLabel4.setBackground(new java.awt.Color(247, 247, 248));
-        jLabel4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel4.setText("Senha:");
-        jLabel4.setMaximumSize(new java.awt.Dimension(280, 22));
-        areaSenha.add(jLabel4);
+        labelSenha.setBackground(new java.awt.Color(247, 247, 248));
+        labelSenha.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        labelSenha.setText("Senha:");
+        labelSenha.setMaximumSize(new java.awt.Dimension(280, 22));
+        areaSenha.add(labelSenha);
 
-        jPasswordField1.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
-        jPasswordField1.setText("hhhhhh");
-        jPasswordField1.setToolTipText("");
-        jPasswordField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        jPasswordField1.setMaximumSize(new java.awt.Dimension(280, 40));
-        jPasswordField1.setPreferredSize(new java.awt.Dimension(280, 40));
-        jPasswordField1.setSelectedTextColor(new java.awt.Color(204, 204, 204));
-        jPasswordField1.setSelectionColor(new java.awt.Color(0, 130, 243));
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        PasswordEdt.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
+        PasswordEdt.setText("hhhhhh");
+        PasswordEdt.setToolTipText("");
+        PasswordEdt.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        PasswordEdt.setMaximumSize(new java.awt.Dimension(280, 40));
+        PasswordEdt.setPreferredSize(new java.awt.Dimension(280, 40));
+        PasswordEdt.setSelectedTextColor(new java.awt.Color(204, 204, 204));
+        PasswordEdt.setSelectionColor(new java.awt.Color(0, 130, 243));
+        PasswordEdt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                PasswordEdtActionPerformed(evt);
             }
         });
-        areaSenha.add(jPasswordField1);
+        areaSenha.add(PasswordEdt);
 
         btnEntrar.setBackground(new java.awt.Color(0, 130, 243));
         btnEntrar.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
@@ -225,11 +225,11 @@ public class FrLogin extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jButton1.setText("Cadastrar");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnCadastrar.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                btnCadastrarMouseClicked(evt);
             }
         });
 
@@ -241,7 +241,7 @@ public class FrLogin extends javax.swing.JFrame {
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(areaSenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jSeparator4, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -262,7 +262,7 @@ public class FrLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -298,25 +298,25 @@ public class FrLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void edtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_edtEmailActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void PasswordEdtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordEdtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_PasswordEdtActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
         FrCadastrar cadastrar = new FrCadastrar();
         cadastrar.setVisible(true);
 
         this.dispose();
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_btnCadastrarMouseClicked
 
     private void btnEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEntrarMouseClicked
         try {
-            String email = jTextField1.getText().trim();
-            String senha = new String(jPasswordField1.getPassword()).trim();
+            String email = edtEmail.getText().trim();
+            String senha = new String(PasswordEdt.getPassword()).trim();
 
             if (email.isEmpty() || senha.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Preencha email e senha.", "Atenção", JOptionPane.WARNING_MESSAGE);
@@ -345,23 +345,23 @@ public class FrLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField PasswordEdt;
     private javax.swing.JPanel alignCenter;
     private javax.swing.JPanel areaEmail;
     private javax.swing.JPanel areaSenha;
     private view.components.PanelRound body;
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnEntrar;
+    private javax.swing.JTextField edtEmail;
     private view.components.PanelRound header;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelIcon;
+    private javax.swing.JLabel labelImagem;
+    private javax.swing.JLabel labelSenha;
     private view.components.PanelRound painelGeral;
     private view.components.PanelRound panelRound1;
     private view.components.PanelRound panelRound4;

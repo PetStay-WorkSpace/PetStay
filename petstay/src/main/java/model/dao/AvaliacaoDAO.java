@@ -20,7 +20,9 @@ public class AvaliacaoDAO implements IDao<Avaliacao> {
             entityManager.persist(a);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             throw e;
         }
     }
@@ -40,16 +42,17 @@ public class AvaliacaoDAO implements IDao<Avaliacao> {
     public void delete(Avaliacao a) {
         try {
             entityManager.getTransaction().begin();
-            Avaliacao ref = entityManager.find(Avaliacao.class, a.getId_avaliacao());
-            if (ref != null) {
-                entityManager.remove(ref);
-            } else {
-                System.out.println("Avaliação não encontrada para exclusão.");
+            Avaliacao managed = entityManager.find(Avaliacao.class, a.getId_avaliacao());
+            if (managed != null) {
+                entityManager.remove(managed);
             }
+ 
             entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            throw e;
+            } catch (Exception e) {
+                if(entityManager.getTransaction().isActive()) {
+                    entityManager.getTransaction().rollback();
+                }
+                throw e;
         }
     }
     
@@ -60,8 +63,7 @@ public class AvaliacaoDAO implements IDao<Avaliacao> {
     
     @Override
     public List<Avaliacao> findAll() {
-        String jpql = "SELECT * FROM Avaliacao a ORDER BY a.data DESC";
-        TypedQuery<Avaliacao> query = entityManager.createQuery(jpql, Avaliacao.class);
-        return query.getResultList();
+        String jpql = "SELECT a FROM Avaliacao a ORDER BY a.data DESC";
+        return entityManager.createQuery(jpql, Avaliacao.class).getResultList();
     }
 }

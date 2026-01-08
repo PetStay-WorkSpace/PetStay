@@ -11,36 +11,29 @@ import javax.swing.table.DefaultTableModel;
 public class PetsController {
 
     private final PetsDAO petsDAO;
-    private final EntityManager entityManager;
 
     public PetsController() {
-        this.entityManager = DatabaseJPA.getInstance().getEntityManager();
-        this.petsDAO = new PetsDAO(entityManager);
+        EntityManager em = DatabaseJPA.getInstance().getEntityManager();
+        this.petsDAO = new PetsDAO(em);
     }
 
-    public boolean save(int dono, String nome, String raca, String especie) {
-        try {
-            Pets pet = new Pets(0, dono, nome, raca, especie);
-            petsDAO.save(pet);
-            System.out.println("Pet salvo com sucesso!");
-            return true;
-        } catch (Exception e) {
-            System.out.println("Erro ao salvar pet: " + e.getMessage());
-            return false;
+    public void save(Pets pet) {
+       if (pet.getNome() == null || pet.getNome().isBlank()) {
+            throw new IllegalArgumentException("Nome do pet é obrigatório.");
         }
+
+        if (pet.getEspecie() == null || pet.getEspecie().isBlank()) {
+            throw new IllegalArgumentException("Espécie do pet é obrigatória.");
+        }
+
+        petsDAO.save(pet);
     }
 
-    public boolean delete(int id) {
-        try {
-            Pets pet = new Pets();
-            pet.setId(id);
-            petsDAO.delete(pet);
-            System.out.println("Pet deletado com sucesso!");
-            return true;
-        } catch (Exception e) {
-            System.out.println("Erro ao deletar pet: " + e.getMessage());
-            return false;
-        }
+    public void delete(int id) {
+       Pets pet = new Pets();
+       pet.setId(id);
+       petsDAO.delete(pet);
+       
     }
 
     public Pets find(int id) {
@@ -49,13 +42,6 @@ public class PetsController {
 
     public List<Pets> findAll() {
         return petsDAO.findAll();
-    }
-
-    public void close() {
-        if (entityManager != null && entityManager.isOpen()) {
-            entityManager.close();
-            System.out.println("EntityManager fechado com sucesso.");
-        }
     }
     
     public void carregarTabela(DefaultTableModel model) {

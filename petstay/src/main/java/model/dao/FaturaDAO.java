@@ -1,13 +1,9 @@
 package model.dao;
 
-import factory.Persistencia;
 import model.Fatura;
 
-import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
 
 public class FaturaDAO implements IDao<Fatura> {
     private final EntityManager entityManager;
@@ -24,7 +20,10 @@ public class FaturaDAO implements IDao<Fatura> {
             entityManager.persist(f);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()){
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
         } 
     }
 
@@ -33,15 +32,15 @@ public class FaturaDAO implements IDao<Fatura> {
         
         try {
             entityManager.getTransaction().begin();
-            Fatura ref = entityManager.find(Fatura.class, f.getId_fatura());
-            if(ref != null) {
-                entityManager.remove(ref);
-            } else {
-                System.out.println(" Endereco nao encontrado");
-            }
+            Fatura managed = entityManager.find(Fatura.class, f.getId_fatura());
+            if(managed != null) {
+                entityManager.remove(managed);
+            } 
             entityManager.getTransaction().commit();
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             throw e;
         }
     }
@@ -53,8 +52,7 @@ public class FaturaDAO implements IDao<Fatura> {
 
     @Override
     public List<Fatura> findAll() {
-        String jpql = "SELECT a FROM Endereco a ORDER BY a.data_emissao DESC";
-        TypedQuery<Fatura> query = entityManager.createQuery(jpql, Fatura.class);
-        return query.getResultList();
+        String jpql = "SELECT f FROM Fatura f ORDER BY f.data_emissao DESC";
+        return entityManager.createQuery(jpql, Fatura.class).getResultList();
     }
 }

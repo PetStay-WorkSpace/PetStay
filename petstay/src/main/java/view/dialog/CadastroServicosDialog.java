@@ -3,6 +3,7 @@ package view.dialog;
 import controller.ServicoController;
 import javax.swing.*;
 import java.awt.Frame;
+import model.Servico;
 
 public class CadastroServicosDialog extends JDialog {
 
@@ -89,20 +90,22 @@ public class CadastroServicosDialog extends JDialog {
             }
 
             double valor = Double.parseDouble(valorStr);
+            
+            Servico servico = new Servico(0, nome, descricao, tipo, valor, ativo);
 
-            boolean ok = controller.save(nome, descricao, tipo, valor, ativo);
+            controller.save(servico);
 
-            if (ok) {
-                JOptionPane.showMessageDialog(this, "Serviço cadastrado com sucesso!");
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Erro ao salvar o serviço.");
-            }
+            JOptionPane.showMessageDialog(this, "Serviço cadastrado com sucesso!");
+            dispose();
 
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Valor deve ser numérico.");
+        } catch (IllegalArgumentException e) {
+        
+            JOptionPane.showMessageDialog(this, e.getMessage(), "Dados inválidos", JOptionPane.WARNING_MESSAGE);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Erro ao salvar: " + ex.getMessage());
         }
+    
     }
 }

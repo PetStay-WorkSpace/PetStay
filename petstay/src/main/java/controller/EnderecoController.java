@@ -10,36 +10,51 @@ import javax.persistence.EntityManager;
 public class EnderecoController {
     
     private final EnderecoDAO enderecoDAO;
-    private final EntityManager entityManager;
-
 
     public EnderecoController() {
-        this.entityManager = DatabaseJPA.getInstance().getEntityManager();
-        this.enderecoDAO = new EnderecoDAO(entityManager);
+        EntityManager em = DatabaseJPA.getInstance().getEntityManager();
+        this.enderecoDAO = new EnderecoDAO(em);
     }
 
-    public boolean save(String rua, String numero, String complemento, String bairro, String cidade, String estado, String cep) {
-        try {
-            Endereco endereco = new Endereco(0, rua, numero, complemento, bairro, cidade, estado, cep);
-            enderecoDAO.save(endereco);
-            System.out.println(" Endereco salvo com sucesso!");
-            return true;
-        } catch (Exception e) {
-            System.out.println(" Erro ao salvar endereco" + e.getMessage());
-            return  false;
+    public void save(Endereco endereco) {
+        
+        if (endereco == null) {
+            throw new IllegalArgumentException("Endereço inválido.");
         }
+
+        if (endereco.getRua() == null || endereco.getRua().isBlank()) {
+            throw new IllegalArgumentException("Rua é obrigatória.");
+        }
+
+        if (endereco.getNumero() == null || endereco.getNumero().isBlank()) {
+            throw new IllegalArgumentException("Número é obrigatório.");
+        }
+
+        if (endereco.getCidade() == null || endereco.getCidade().isBlank()) {
+            throw new IllegalArgumentException("Cidade é obrigatória.");
+        }
+
+        if (endereco.getEstado() == null || endereco.getEstado().isBlank()) {
+            throw new IllegalArgumentException("Estado é obrigatório.");
+        }
+
+        if (endereco.getCep() == null || endereco.getCep().isBlank()) {
+            throw new IllegalArgumentException("CEP é obrigatório.");
+        }
+
+        endereco.setCep(endereco.getCep().replaceAll("\\D", ""));
+        endereco.setEstado(endereco.getEstado().toUpperCase().trim());
+
+        enderecoDAO.save(endereco);
     }
 
-    public boolean delete(int id_endereco) {
-        try {
-            Endereco endereco = new Endereco();
-            endereco.setId_endereco(id_endereco);
-            enderecoDAO.delete(endereco);
-            return true;
-        } catch (Exception e) {
-            System.out.println("Erro ao deletar" + e.getMessage());
-            return false;
+    public void delete(int id_endereco) {
+        Endereco endereco = enderecoDAO.find(id_endereco);
+        
+        if(endereco == null) {
+            throw new IllegalArgumentException("Endereço não encontrado");
         }
+        enderecoDAO.delete(endereco);
     }
 
     public Endereco find(int id_endereco) {
@@ -50,10 +65,4 @@ public class EnderecoController {
         return enderecoDAO.findAll();
     }
     
-    public void close() {
-        if (entityManager != null && entityManager.isOpen()) {
-            entityManager.close();
-            System.out.println(" EntityManager fechado com sucesso.");
-        }
-    }
 }

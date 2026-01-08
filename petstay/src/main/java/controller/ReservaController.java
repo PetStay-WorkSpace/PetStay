@@ -17,16 +17,11 @@ public class ReservaController {
         this.reservaDAO = new ReservaDAO(entityManager);
     }
 
-    public void save(int id_pet, int id_cliente, String data_inicio, String data_fim, String servico, boolean ativo, int modelo, double preco, String nome, String descricao) {
-        Reserva reserva = new Reserva(0, id_pet, id_cliente, data_inicio, data_fim, servico, ativo, modelo, preco, nome, descricao);
+    public void save(Reserva reserva) {
         reservaDAO.save(reserva);
     }
 
-    public void update(int id_reserva, int id_pet, int id_cliente, String data_inicio, String data_fim, String servico, boolean ativo, int modelo, double preco, String nome, String descricao) {
-        Reserva reserva = new Reserva(id_reserva, id_pet, id_cliente, data_inicio, data_fim, servico, ativo, modelo, preco, nome, descricao);
-        reservaDAO.update(reserva);
-    }
-
+    
     public void delete(int id_reserva) {
         Reserva reserva = new Reserva();
         reserva.setId_reserva(id_reserva);

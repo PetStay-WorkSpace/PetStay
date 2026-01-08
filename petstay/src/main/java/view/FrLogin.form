@@ -143,9 +143,9 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel6" pref="530" max="32767" attributes="0"/>
+                              <Component id="labelImagem" pref="530" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelIcon" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -157,23 +157,23 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelIcon" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel6" pref="401" max="32767" attributes="0"/>
+                          <Component id="labelImagem" pref="401" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="jLabel5">
+                <Component class="javax.swing.JLabel" name="labelIcon">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/Logo.png"/>
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="jLabel6">
+                <Component class="javax.swing.JLabel" name="labelImagem">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/images/bg_login.png"/>
@@ -199,7 +199,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton1" max="32767" attributes="0"/>
+                              <Component id="btnCadastrar" max="32767" attributes="0"/>
                               <Component id="areaSenha" alignment="1" max="32767" attributes="0"/>
                               <Component id="btnEntrar" alignment="0" max="32767" attributes="0"/>
                               <Component id="jSeparator4" alignment="1" max="32767" attributes="0"/>
@@ -223,7 +223,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jSeparator4" min="-2" pref="13" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="btnCadastrar" min="-2" pref="37" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
@@ -292,7 +292,7 @@
                     <Property name="rows" type="int" value="2"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel3">
+                    <Component class="javax.swing.JLabel" name="labelEmail">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins" size="14" style="0"/>
@@ -306,7 +306,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField1">
+                    <Component class="javax.swing.JTextField" name="edtEmail">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins" size="12" style="0"/>
@@ -337,7 +337,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edtEmailActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -357,7 +357,7 @@
                     <Property name="rows" type="int" value="2"/>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="jLabel4">
+                    <Component class="javax.swing.JLabel" name="labelSenha">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="f8" green="f7" red="f7" type="rgb"/>
@@ -371,7 +371,7 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+                    <Component class="javax.swing.JPasswordField" name="PasswordEdt">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Poppins" size="12" style="0"/>
@@ -399,7 +399,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField1ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PasswordEdtActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -428,7 +428,7 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="jSeparator4">
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="btnCadastrar">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Poppins" size="14" style="0"/>
@@ -436,7 +436,7 @@
                     <Property name="text" type="java.lang.String" value="Cadastrar"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCadastrarMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>

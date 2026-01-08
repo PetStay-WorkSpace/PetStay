@@ -10,33 +10,41 @@ import javax.swing.table.DefaultTableModel;
 public class ServicoController {
 
     private final ServicoDAO servicoDAO;
-    private final EntityManager entityManager;
 
     public ServicoController() {
-        this.entityManager = DatabaseJPA.getInstance().getEntityManager();
+        EntityManager entityManager = DatabaseJPA.getInstance().getEntityManager();
         this.servicoDAO = new ServicoDAO(entityManager);
     }
 
-    public boolean save(String nome, String descricao, String tipo, double valor, boolean ativo) {
-        try {
-            Servico servico = new Servico(0, nome, descricao, tipo, valor, ativo);
-            servicoDAO.save(servico);
-            return true;
-        } catch (Exception e) {
-            throw new RuntimeException("Erro ao salvar serviço: " + e.getMessage(), e);
+    public void save(Servico servico) {
+        if (servico == null) {
+            throw new IllegalArgumentException("Serviço não pode ser nulo.");
         }
+
+        if (servico.getNome() == null || servico.getNome().isBlank()) {
+            throw new IllegalArgumentException("Nome do serviço é obrigatório.");
+        }
+
+        if (servico.getTipo() == null || servico.getTipo().isBlank()) {
+            throw new IllegalArgumentException("Tipo do serviço é obrigatório.");
+        }
+
+        if (servico.getValor() < 0) {
+            throw new IllegalArgumentException("Valor do serviço não pode ser negativo.");
+        }
+
+        servicoDAO.save(servico);
         
     }
 
-    public boolean delete(int id_servico) {
-        try {
-            Servico servico = new Servico();
-            servico.setId_servico(id_servico);
-            servicoDAO.delete(servico);
-            return true;
-        } catch (Exception e) {
-            throw new RuntimeException("Erro ao deletar serviço: " + e.getMessage(), e);
+    public void delete(int idServico) {
+        Servico servico = servicoDAO.find(idServico);
+
+        if (servico == null) {
+            throw new IllegalArgumentException("Serviço não encontrado.");
         }
+
+        servicoDAO.delete(servico);
     }
 
     public Servico find(int id_servico) {
@@ -45,12 +53,6 @@ public class ServicoController {
 
     public List<Servico> findAll() {
         return servicoDAO.findAll();
-    }
-    
-    public void close() {
-        if (entityManager != null && entityManager.isOpen()) {
-            entityManager.close();
-        }
     }
     
    

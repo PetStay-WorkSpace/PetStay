@@ -20,8 +20,10 @@ public class ReservaDAO implements IDao<Reserva> {
             entityManager.persist(r);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            System.err.println("Erro ao salvar reserva: " + e.getMessage());
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
         }
     }
 
@@ -32,7 +34,7 @@ public class ReservaDAO implements IDao<Reserva> {
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
-            System.err.println("Erro ao atualizar reserva: " + e.getMessage());
+            throw e;
         }
     }
 
@@ -40,16 +42,16 @@ public class ReservaDAO implements IDao<Reserva> {
     public void delete(Reserva r) {
         try {
             entityManager.getTransaction().begin();
-            Reserva ref = entityManager.find(Reserva.class, r.getId_reserva());
-            if (ref != null) {
-                entityManager.remove(ref);
-            } else {
-                System.out.println("Reserva não encontrada para exclusão");
-            }
+            Reserva managed = entityManager.find(Reserva.class, r.getId_reserva());
+            if (managed != null) {
+                entityManager.remove(managed);
+            } 
             entityManager.getTransaction().commit();
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            System.err.println("Erro ao excluir reserva: " + e.getMessage());
+            if(entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            throw e;
         }
     }
 
@@ -61,8 +63,7 @@ public class ReservaDAO implements IDao<Reserva> {
     @Override
     public List<Reserva> findAll() {
         String jpql = "SELECT r FROM Reserva r ORDER BY r.id_reserva DESC";
-        TypedQuery<Reserva> query = entityManager.createQuery(jpql, Reserva.class);
-        return query.getResultList();
+        return entityManager.createQuery(jpql, Reserva.class).getResultList();
     }
 
     public List<Reserva> findByModelo(int modelo) {

@@ -40,26 +40,26 @@ public class FrCadastrar extends javax.swing.JFrame {
         header = new view.components.PanelRound();
         winButton1 = new view.components.win_button.WinButton();
         body = new view.components.PanelRound();
-        panelRound4 = new view.components.PanelRound();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        painelLogo = new view.components.PanelRound();
+        labelLogo = new javax.swing.JLabel();
+        labelCachorro = new javax.swing.JLabel();
         panelRound1 = new view.components.PanelRound();
         texts_info = new javax.swing.JPanel();
         alignCenter = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        areaNomeTel = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        painelNomeTelefone = new javax.swing.JPanel();
+        labelNome = new javax.swing.JLabel();
+        labelTelefone = new javax.swing.JLabel();
         edtNome = new javax.swing.JTextField();
         edtTelefone = new javax.swing.JTextField();
-        areaEmail = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        painelEmail = new javax.swing.JPanel();
+        labelEmail = new javax.swing.JLabel();
         edtEmail = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        painelCPF = new javax.swing.JPanel();
+        labelCPF = new javax.swing.JLabel();
         edtCPF = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        painelSenha = new javax.swing.JPanel();
+        labelSenha = new javax.swing.JLabel();
         edtSenha = new javax.swing.JTextField();
         btnEntrar = new javax.swing.JButton();
         btnIrParaLogin = new javax.swing.JButton();
@@ -108,33 +108,33 @@ public class FrCadastrar extends javax.swing.JFrame {
         body.setRoundBottomLeft(30);
         body.setRoundBottomRight(30);
 
-        panelRound4.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound4.setRoundBottomLeft(30);
+        painelLogo.setBackground(new java.awt.Color(255, 255, 255));
+        painelLogo.setRoundBottomLeft(30);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo.png"))); // NOI18N
+        labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Logo.png"))); // NOI18N
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bg_cadastro.png"))); // NOI18N
+        labelCachorro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bg_cadastro.png"))); // NOI18N
 
-        javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
-        panelRound4.setLayout(panelRound4Layout);
-        panelRound4Layout.setHorizontalGroup(
-            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound4Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelLogoLayout = new javax.swing.GroupLayout(painelLogo);
+        painelLogo.setLayout(painelLogoLayout);
+        painelLogoLayout.setHorizontalGroup(
+            painelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelLogoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelRound4Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
+                .addGroup(painelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelCachorro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(painelLogoLayout.createSequentialGroup()
+                        .addComponent(labelLogo)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        panelRound4Layout.setVerticalGroup(
-            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound4Layout.createSequentialGroup()
+        painelLogoLayout.setVerticalGroup(
+            painelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelLogoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
+                .addComponent(labelLogo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                .addComponent(labelCachorro, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -153,19 +153,19 @@ public class FrCadastrar extends javax.swing.JFrame {
 
         texts_info.add(alignCenter);
 
-        areaNomeTel.setBackground(new java.awt.Color(247, 247, 248));
-        areaNomeTel.setMaximumSize(new java.awt.Dimension(358, 139));
-        areaNomeTel.setLayout(new java.awt.GridLayout(2, 2, 0, -4));
+        painelNomeTelefone.setBackground(new java.awt.Color(247, 247, 248));
+        painelNomeTelefone.setMaximumSize(new java.awt.Dimension(358, 139));
+        painelNomeTelefone.setLayout(new java.awt.GridLayout(2, 2, 0, -4));
 
-        jLabel3.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel3.setText("Nome:");
-        jLabel3.setMaximumSize(new java.awt.Dimension(280, 22));
-        jLabel3.setPreferredSize(new java.awt.Dimension(280, 16));
-        areaNomeTel.add(jLabel3);
+        labelNome.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        labelNome.setText("Nome:");
+        labelNome.setMaximumSize(new java.awt.Dimension(280, 22));
+        labelNome.setPreferredSize(new java.awt.Dimension(280, 16));
+        painelNomeTelefone.add(labelNome);
 
-        jLabel7.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel7.setText("Telefone:");
-        areaNomeTel.add(jLabel7);
+        labelTelefone.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        labelTelefone.setText("Telefone:");
+        painelNomeTelefone.add(labelTelefone);
 
         edtNome.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         edtNome.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 3, new java.awt.Color(247, 247, 248)));
@@ -179,50 +179,50 @@ public class FrCadastrar extends javax.swing.JFrame {
                 edtNomeActionPerformed(evt);
             }
         });
-        areaNomeTel.add(edtNome);
+        painelNomeTelefone.add(edtNome);
 
         edtTelefone.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         edtTelefone.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 3, 0, 0, new java.awt.Color(247, 247, 248)));
-        areaNomeTel.add(edtTelefone);
+        painelNomeTelefone.add(edtTelefone);
 
-        areaEmail.setBackground(new java.awt.Color(247, 247, 248));
-        areaEmail.setMaximumSize(new java.awt.Dimension(358, 139));
-        areaEmail.setLayout(new java.awt.GridLayout(2, 1, 0, -4));
+        painelEmail.setBackground(new java.awt.Color(247, 247, 248));
+        painelEmail.setMaximumSize(new java.awt.Dimension(358, 139));
+        painelEmail.setLayout(new java.awt.GridLayout(2, 1, 0, -4));
 
-        jLabel4.setBackground(new java.awt.Color(247, 247, 248));
-        jLabel4.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel4.setText("Email:");
-        jLabel4.setMaximumSize(new java.awt.Dimension(280, 22));
-        areaEmail.add(jLabel4);
+        labelEmail.setBackground(new java.awt.Color(247, 247, 248));
+        labelEmail.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        labelEmail.setText("Email:");
+        labelEmail.setMaximumSize(new java.awt.Dimension(280, 22));
+        painelEmail.add(labelEmail);
 
         edtEmail.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         edtEmail.setPreferredSize(new java.awt.Dimension(280, 40));
-        areaEmail.add(edtEmail);
+        painelEmail.add(edtEmail);
 
-        jPanel2.setBackground(new java.awt.Color(247, 247, 248));
-        jPanel2.setLayout(new java.awt.GridLayout(2, 1, 0, -4));
+        painelCPF.setBackground(new java.awt.Color(247, 247, 248));
+        painelCPF.setLayout(new java.awt.GridLayout(2, 1, 0, -4));
 
-        jLabel8.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel8.setText("CPF:");
-        jPanel2.add(jLabel8);
+        labelCPF.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        labelCPF.setText("CPF:");
+        painelCPF.add(labelCPF);
 
         edtCPF.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         edtCPF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         edtCPF.setPreferredSize(new java.awt.Dimension(280, 40));
-        jPanel2.add(edtCPF);
+        painelCPF.add(edtCPF);
 
-        jPanel3.setBackground(new java.awt.Color(247, 247, 248));
-        jPanel3.setLayout(new java.awt.GridLayout(2, 1));
+        painelSenha.setBackground(new java.awt.Color(247, 247, 248));
+        painelSenha.setLayout(new java.awt.GridLayout(2, 1));
 
-        jLabel9.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
-        jLabel9.setText("Senha");
-        jPanel3.add(jLabel9);
+        labelSenha.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        labelSenha.setText("Senha");
+        painelSenha.add(labelSenha);
 
         edtSenha.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         edtSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         edtSenha.setMargin(new java.awt.Insets(2, 30, 2, 6));
         edtSenha.setPreferredSize(new java.awt.Dimension(280, 40));
-        jPanel3.add(edtSenha);
+        painelSenha.add(edtSenha);
 
         btnEntrar.setBackground(new java.awt.Color(0, 130, 243));
         btnEntrar.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
@@ -259,10 +259,10 @@ public class FrCadastrar extends javax.swing.JFrame {
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(areaEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(areaNomeTel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelNomeTelefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(painelSenha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(painelCPF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound1Layout.createSequentialGroup()
                         .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -275,13 +275,13 @@ public class FrCadastrar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(texts_info, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(areaNomeTel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelNomeTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(areaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(painelSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -294,13 +294,13 @@ public class FrCadastrar extends javax.swing.JFrame {
         bodyLayout.setHorizontalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(bodyLayout.createSequentialGroup()
-                .addComponent(panelRound4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(painelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(64, 64, 64)
                 .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         bodyLayout.setVerticalGroup(
             bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRound4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -371,8 +371,6 @@ public class FrCadastrar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel alignCenter;
-    private javax.swing.JPanel areaEmail;
-    private javax.swing.JPanel areaNomeTel;
     private view.components.PanelRound body;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnIrParaLogin;
@@ -383,18 +381,20 @@ public class FrCadastrar extends javax.swing.JFrame {
     private javax.swing.JTextField edtTelefone;
     private view.components.PanelRound header;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel labelCPF;
+    private javax.swing.JLabel labelCachorro;
+    private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelLogo;
+    private javax.swing.JLabel labelNome;
+    private javax.swing.JLabel labelSenha;
+    private javax.swing.JLabel labelTelefone;
+    private javax.swing.JPanel painelCPF;
+    private javax.swing.JPanel painelEmail;
     private view.components.PanelRound painelGeral;
+    private view.components.PanelRound painelLogo;
+    private javax.swing.JPanel painelNomeTelefone;
+    private javax.swing.JPanel painelSenha;
     private view.components.PanelRound panelRound1;
-    private view.components.PanelRound panelRound4;
     private javax.swing.JPanel texts_info;
     private view.components.win_button.WinButton winButton1;
     // End of variables declaration//GEN-END:variables
