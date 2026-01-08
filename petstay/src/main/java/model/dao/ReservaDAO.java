@@ -77,4 +77,16 @@ public class ReservaDAO implements IDao<Reserva> {
             return List.of();
         }
     }
+    
+    public List<Reserva> findByIdPet(int idPet) {
+        try {
+            String jpql = "SELECT r FROM Reserva r WHERE r.id_pet = :idPet ORDER BY r.id_reserva DESC";
+            TypedQuery<Reserva> query = entityManager.createQuery(jpql, Reserva.class);
+            query.setParameter("idPet", idPet);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.err.println("Erro ao buscar reservas por id_pet: " + e.getMessage());
+            return List.of();
+        }
+    }
 }

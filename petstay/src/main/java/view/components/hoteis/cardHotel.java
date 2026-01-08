@@ -165,8 +165,12 @@ public class cardHotel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(null);
 
-        button_buy.setFont(new java.awt.Font("Poppins", 0, 14)); // NOI18N
+        button_buy.setBackground(new java.awt.Color(0, 130, 243));
+        button_buy.setFont(new java.awt.Font("Poppins SemiBold", 0, 14)); // NOI18N
+        button_buy.setForeground(new java.awt.Color(255, 255, 255));
         button_buy.setText("Reservar");
+        button_buy.setBorder(null);
+        button_buy.setBorderPainted(false);
         button_buy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 button_buyActionPerformed(evt);
@@ -179,11 +183,18 @@ public class cardHotel extends javax.swing.JPanel {
         price.setFont(new java.awt.Font("Poppins SemiBold", 0, 24)); // NOI18N
         price.setText("R$9,99");
 
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportBorder(null);
+        
         subtitle.setColumns(20);
+        subtitle.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         subtitle.setLineWrap(true);
+        subtitle.setWrapStyleWord(true);
         subtitle.setRows(5);
         subtitle.setText("dsadsadsa");
-        subtitle.setBorder(null);
+        subtitle.setBorder(javax.swing.BorderFactory.createEmptyBorder(5, 8, 5, 8));
+        subtitle.setBackground(new java.awt.Color(255, 255, 255));
         subtitle.setCaretColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(subtitle);
 
